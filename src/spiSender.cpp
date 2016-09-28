@@ -38,7 +38,7 @@ void spiSender::transfer(unsigned char *byte)
 		.tx_buf = (*byte),
 		.rx_buf = &rx,
 		.len = 1,
-		.delay_usecs = delay;
+		.delay_usecs = delay,
 		.speed_hz = spi_speed,
 		.bits_per_word = spi_bits,
 	};
