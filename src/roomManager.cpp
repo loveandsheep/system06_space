@@ -62,9 +62,9 @@ void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 {
 	setSSPin(ss, true);
-	usleep(1000);
 	for (int i = 0;i < num;i++)
 	{
+		usleep(1000);
 #ifndef TARGET_OSX
 		wiringPiSPIDataRW(0, &bytes[i], 1);
 #endif

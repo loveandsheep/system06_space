@@ -15,6 +15,8 @@ void ofApp::update()
 		room.sendSpi_single(0, 0x02, i);
 		usleep(300000);
 		room.sendSpi_single(0, 0x03, i);
+		
+		cout << "out :" << i << endl;
 	}
 }
 
