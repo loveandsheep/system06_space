@@ -38,7 +38,9 @@ void spiSender::trTest()
 		0xF0, 0x0D,
 	};
 	uint8_t rx[ARRAY_SIZE(tx)] = {0, };
+
 #ifndef TARGET_OSX
+	
 	struct spi_ioc_transfer tr;
 	
 	memset(&tr, 0, sizeof(tr));

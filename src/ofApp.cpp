@@ -24,23 +24,23 @@ void ofApp::update()
 //
 //		cout << "signal :" << int(bt) << endl;
 
-		int i = 0;
+//		int i = 0;
+//
+//		room.sendSpi_single(0, 0x04, i);
+//		room.sendSpi_single(0, 0xFF, i);
+//
+//		usleep(10000);
+//		room.sendSpi_single(0, 0x02, i);
+//
+//		usleep(300000);
+//		room.sendSpi_single(0, 0x03, i);
+//		
+//		usleep(10000);
+//		room.sendSpi_single(0, 0x04, i);
+//		room.sendSpi_single(0, 0x00, i);
 
-		room.sendSpi_single(0, 0x04, i);
-		room.sendSpi_single(0, 0xFF, i);
-
-		usleep(10000);
-		room.sendSpi_single(0, 0x02, i);
-
-		usleep(300000);
-		room.sendSpi_single(0, 0x03, i);
 		
-		usleep(10000);
-		room.sendSpi_single(0, 0x04, i);
-		room.sendSpi_single(0, 0x00, i);
-
-		
-		cout << "out :" << i << endl;
+//		cout << "out :" << i << endl;
 	}
 }
 
