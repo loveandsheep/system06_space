@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-
+#include "spiSender.h"
 #include "roomManager.h"
 
 class ofApp : public ofBaseApp{
@@ -23,5 +23,6 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+	void exit();
 	roomManager room;
 };

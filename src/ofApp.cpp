@@ -4,13 +4,19 @@
 void ofApp::setup()
 {
 	room.setup(5, 1);
+	
+	spiSender::init();
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
+	
 	if (ofGetFrameNum() % 60 == 0)
 	{
+		unsigned char bt = 0x04;
+		spiSender::transfer(&bt);
+		
 		int i = 0;
 
 		room.sendSpi_single(0, 0x04, i);
@@ -38,6 +44,12 @@ void ofApp::draw()
 	ofTranslate(50, 50);
 	room.draw();
 	ofPopMatrix();
+}
+
+void ofApp::exit()
+{
+	cout << "called exit. " << endl;
+	spiSender::exit();
 }
 
 //--------------------------------------------------------------
