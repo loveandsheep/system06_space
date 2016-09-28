@@ -21,10 +21,10 @@ void roomManager::setup(int row, int column)
 		units.push_back(un);
 	}
 	
-//	int speed = 5000;
-//	if ((wiringPiSPISetup (0, speed)) < 0) {
-//		printf("wiringPiSPISetup error \n");
-//	}
+	int speed = 5000;
+	if ((wiringPiSPISetup (0, speed)) < 0) {
+		printf("wiringPiSPISetup error \n");
+	}
 	
 	if (wiringPiSetupGpio() == -1)
 	{
@@ -36,9 +36,9 @@ void roomManager::setup(int row, int column)
 	pinMode(SSPIN_D, OUTPUT);
 	pinMode(SSPIN_E, OUTPUT);
 
-	pinMode(9, INPUT);//MISO
-	pinMode(10, OUTPUT);//MOSI
-	pinMode(11, OUTPUT);//CLk
+//	pinMode(9, INPUT);//MISO
+//	pinMode(10, OUTPUT);//MOSI
+//	pinMode(11, OUTPUT);//CLk
 	
 	
 }
