@@ -31,6 +31,7 @@ class spiSender
 public:
 	static void init();
 	static void transfer(unsigned char* byte);
+	static void trTest();
 	static void exit();
 };
 

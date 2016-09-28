@@ -24,6 +24,42 @@ void spiSender::init()
 #endif
 }
 
+void spiSender::trTest()
+{
+	int ret;
+	uint8_t tx[] = {
+		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+		0x40, 0x00, 0x00, 0x00, 0x00, 0x95,
+		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+		0xDE, 0xAD, 0xBE, 0xEF, 0xBA, 0xAD,
+		0xF0, 0x0D,
+	};
+	uint8_t rx[ARRAY_SIZE(tx)] = {0, };
+#ifndef TARGET_OSX
+	struct spi_ioc_transfer tr;
+	
+	tr.tx_buf = (unsigned long)tx;
+	tr.rx_buf = (unsigned long)rx;
+	tr.len = ARRAY_SIZE(tx);
+	tr.delay_usecs = spi_delay;
+	tr.speed_hz = spi_speed;
+	tr.bits_per_word = bits;
+
+	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
+	if (ret < 1)
+		cout << "can't send spi message" << endl;
+	
+	for (ret = 0; ret < ARRAY_SIZE(tx); ret++) {
+		if (!(ret % 6))
+			puts("");
+		printf("%.2X ", rx[ret]);
+	}
+	puts("");
+#endif
+}
+
 void spiSender::transfer(unsigned char *byte)
 {
 	uint8_t tx[1] = {byte[0]};
