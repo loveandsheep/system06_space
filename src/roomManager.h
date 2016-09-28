@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "ofxWiringPi.h"
 
-#define SSPIN_A 10
+#define SSPIN_A 8
 #define SSPIN_B 10
 #define SSPIN_C 10
 #define SSPIN_D 10
