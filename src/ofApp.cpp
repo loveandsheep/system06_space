@@ -11,29 +11,24 @@ void ofApp::update()
 {
 	if (ofGetFrameNum() % 60 == 0)
 	{
-//		int i = ofRandom(5);
-//
-//		room.sendSpi_single(0, 0x04, i);
-//		room.sendSpi_single(0, 0xFF, i);
-//
-//		usleep(10000);
-//		room.sendSpi_single(0, 0x02, i);
-//
-//		usleep(300000);
-//		room.sendSpi_single(0, 0x03, i);
-//		
-//		usleep(10000);
-//		room.sendSpi_single(0, 0x04, i);
-//		room.sendSpi_single(0, 0x00, i);
-//
-//		
-//		cout << "out :" << i << endl;
+		int i = ofRandom(5);
+
+		room.sendSpi_single(0, 0x04, i);
+		room.sendSpi_single(0, 0xFF, i);
+
+		usleep(10000);
+		room.sendSpi_single(0, 0x02, i);
+
+		usleep(300000);
+		room.sendSpi_single(0, 0x03, i);
 		
-		digitalWrite(SSPIN_A, 0);
-	}
-	if (ofGetFrameNum() % 60 == 30)
-	{
-		digitalWrite(SSPIN_A, 1);
+		usleep(10000);
+		room.sendSpi_single(0, 0x04, i);
+		room.sendSpi_single(0, 0x00, i);
+
+		
+		cout << "out :" << i << endl;
+	
 	}
 }
 
