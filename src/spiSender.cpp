@@ -16,23 +16,18 @@ void spiSender::init()
 	
 #ifndef TARGET_OSX
 	ret = ioctl(fd, SPI_IOC_WR_MODE, &spi_mode);
-	
 	ret = ioctl(fd, SPI_IOC_RD_MODE, &spi_mode);
-	
 	ret = ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &spi_bits);
-	
 	ret = ioctl(fd, SPI_IOC_RD_BITS_PER_WORD, &spi_bits);
-	
 	ret = ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &spi_speed);
-	
 	ret = ioctl(fd, SPI_IOC_RD_MAX_SPEED_HZ, &spi_speed);
 #endif
 }
 
 void spiSender::transfer(unsigned char *byte)
 {
-	uint8_t tx[1] = {byte[0]};
-	uint8_t rx[1];
+	uint8_t tx[8] = {byte[0]};
+	uint8_t rx[8];
 	uint16_t delay;
 #ifndef TARGET_OSX
 	struct spi_ioc_transfer tr;
@@ -43,8 +38,6 @@ void spiSender::transfer(unsigned char *byte)
 	tr.delay_usecs = delay;
 	tr.speed_hz = spi_speed;
 	tr.bits_per_word = spi_bits;
-	tr.cs_change = 0;
-	tr.pad = 0;
 	
 	int ret;
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
