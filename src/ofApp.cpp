@@ -17,8 +17,12 @@ void ofApp::update()
 		unsigned char bt = 0x04;
 		room.setSSPin(0, true);
 		usleep(5000);
+		cout << "send in ss" << endl;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
+
+		cout << "send innot ss" << endl;
+		spiSender::transfer(&bt);
 
 		int i = 0;
 
