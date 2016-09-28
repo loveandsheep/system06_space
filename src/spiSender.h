@@ -24,7 +24,7 @@
 static int fd;
 static uint8_t spi_mode = 0;
 static uint8_t spi_bits = 8;
-static uint32_t spi_speed = 500000;
+static uint32_t spi_speed = 5000;
 
 class spiSender
 {
