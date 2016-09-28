@@ -15,8 +15,11 @@ void ofApp::update()
 	if (ofGetFrameNum() % 60 == 0)
 	{
 		unsigned char bt = 0x04;
+		room.setSSPin(0, true);
+		usleep(5000);
 		spiSender::transfer(&bt);
-		
+		room.setSSPin(0, false);
+
 		int i = 0;
 
 		room.sendSpi_single(0, 0x04, i);
