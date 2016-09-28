@@ -16,28 +16,16 @@ void spiSender::init()
 	
 #ifndef TARGET_OSX
 	ret = ioctl(fd, SPI_IOC_WR_MODE, &spi_mode);
-	if (ret == -1)
-		pabort("can't set spi mode");
 	
 	ret = ioctl(fd, SPI_IOC_RD_MODE, &spi_mode);
-	if (ret == -1)
-		pabort("can't get spi mode");
 	
 	ret = ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &spi_bits);
-	if (ret == -1)
-		pabort("can't set bits per word");
 	
 	ret = ioctl(fd, SPI_IOC_RD_BITS_PER_WORD, &spi_bits);
-	if (ret == -1)
-		pabort("can't get bits per word");
 	
 	ret = ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &spi_speed);
-	if (ret == -1)
-		pabort("can't set max speed hz");
 	
 	ret = ioctl(fd, SPI_IOC_RD_MAX_SPEED_HZ, &spi_speed);
-	if (ret == -1)
-		pabort("can't get max speed hz");
 #endif
 }
 
