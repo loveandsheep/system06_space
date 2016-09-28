@@ -34,14 +34,14 @@ void spiSender::transfer(unsigned char *byte)
 	uint8_t rx;
 	uint16_t delay;
 #ifndef TARGET_OSX
-	struct spi_ioc_transfer tr = {
-		.tx_buf = (unsigned long)(*byte),
-		.rx_buf = (unsigned long)&rx,
-		.len = 1,
-		.delay_usecs = delay,
-		.speed_hz = spi_speed,
-		.bits_per_word = spi_bits,
-	};
+	struct spi_ioc_transfer tr;
+	
+	tr.tx_buf = (unsigned long)(*byte);
+	tr.rx_buf = (unsigned long)&rx;
+	tr.len = 1;
+	tr.delay_usecs = delay;
+	tr.speed_hz = spi_speed;
+	tr.bits_per_word = spi_bits;
 	
 	int ret;
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
