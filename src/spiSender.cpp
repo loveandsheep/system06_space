@@ -52,6 +52,9 @@ void spiSender::trTest()
 	if (ret < 1)
 		cout << "can't send spi message" << endl;
 	
+	cout << "spi :" << spi_speed << endl;
+	cout << "bits:" << spi_bits << endl;
+	
 	for (ret = 0; ret < ARRAY_SIZE(tx); ret++) {
 		if (!(ret % 6))
 			puts("");
