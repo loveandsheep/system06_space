@@ -12,6 +12,7 @@
 #include "ofMain.h"
 
 #ifndef TARGET_OSX
+#include <wiringPiSPI.h>
 #include <wiringPi.h>
 #endif
 
