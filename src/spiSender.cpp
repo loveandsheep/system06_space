@@ -10,7 +10,7 @@
 
 void spiSender::init()
 {
-	fd = open(fd, O_RDWR);
+	fd = open("/dev/spidev0.0", O_RDWR);
 	if (fd < 0) cout << "spi initialize failed. " << endl;
 	int ret;
 	
@@ -41,6 +41,7 @@ void spiSender::trTest()
 #ifndef TARGET_OSX
 	struct spi_ioc_transfer tr;
 	
+	memset(&tr, 0, sizeof(tr));
 	tr.tx_buf = (unsigned long)tx;
 	tr.rx_buf = (unsigned long)rx;
 	tr.len = ARRAY_SIZE(tx);
