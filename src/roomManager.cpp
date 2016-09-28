@@ -23,19 +23,19 @@ void roomManager::setup(int row, int column)
 	
 #ifndef TARGET_OSX
 	int speed = 500000;
-	if ((wiringPiSPISetup (0, speed)) < 0) {
-		printf("wiringPiSPISetup error \n");
-	}
+//	if ((wiringPiSPISetup (0, speed)) < 0) {
+//		printf("wiringPiSPISetup error \n");
+//	}
 	
-	if (wiringPiSetupGpio() == -1)
-	{
-		printf("GPIO ERROR! \n");
-	}
-	pinMode(SSPIN_A, OUTPUT);
-	pinMode(SSPIN_B, OUTPUT);
-	pinMode(SSPIN_C, OUTPUT);
-	pinMode(SSPIN_D, OUTPUT);
-	pinMode(SSPIN_E, OUTPUT);
+//	if (wiringPiSetupGpio() == -1)
+//	{
+//		printf("GPIO ERROR! \n");
+//	}
+//	pinMode(SSPIN_A, OUTPUT);
+//	pinMode(SSPIN_B, OUTPUT);
+//	pinMode(SSPIN_C, OUTPUT);
+//	pinMode(SSPIN_D, OUTPUT);
+//	pinMode(SSPIN_E, OUTPUT);
 #endif
 	
 }
