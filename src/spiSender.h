@@ -19,8 +19,8 @@
 	#include <linux/spi/spidev.h>
 #endif
 
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 
-static char *spi_device = "/dev/spidev1.1";
 static int fd;
 static uint8_t spi_mode = 0;
 static uint8_t spi_bits = 8;

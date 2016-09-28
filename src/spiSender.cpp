@@ -10,7 +10,7 @@
 
 void spiSender::init()
 {
-	fd = open(spi_device, O_RDWR);
+	fd = open("/dev/spidev1.1", O_RDWR);
 	if (fd < 0) cout << "spi initialize failed. " << endl;
 	int ret;
 	
