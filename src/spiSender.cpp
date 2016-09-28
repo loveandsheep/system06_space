@@ -26,8 +26,8 @@ void spiSender::init()
 
 void spiSender::transfer(unsigned char *byte)
 {
-	uint8_t tx[8] = {byte[0]};
-	uint8_t rx[8];
+	uint8_t tx[1] = {byte[0]};
+	uint8_t rx[1];
 	uint16_t delay;
 #ifndef TARGET_OSX
 	struct spi_ioc_transfer tr;
