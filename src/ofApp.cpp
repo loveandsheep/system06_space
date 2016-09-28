@@ -13,22 +13,29 @@ void ofApp::update()
 	{
 		int i = 0;
 
-		room.sendSpi_single(0, 0x04, i);
-		room.sendSpi_single(0, 0xFF, i);
-
-		usleep(10000);
-		room.sendSpi_single(0, 0x02, i);
-
-		usleep(300000);
-		room.sendSpi_single(0, 0x03, i);
+//		room.sendSpi_single(0, 0x04, i);
+//		room.sendSpi_single(0, 0xFF, i);
+//
+//		usleep(10000);
+//		room.sendSpi_single(0, 0x02, i);
+//
+//		usleep(300000);
+//		room.sendSpi_single(0, 0x03, i);
+//		
+//		usleep(10000);
+//		room.sendSpi_single(0, 0x04, i);
+//		room.sendSpi_single(0, 0x00, i);
+//
+//		
+//		cout << "out :" << i << endl;
 		
-		usleep(10000);
-		room.sendSpi_single(0, 0x04, i);
-		room.sendSpi_single(0, 0x00, i);
-
-		
-		cout << "out :" << i << endl;
-	
+		digitalWrite(10, true);
+		digitalWrite(11, true);
+	}
+	if (ofGetFrameNum() % 60 == 30)
+	{
+		digitalWrite(10, false);
+		digitalWrite(11, false);
 	}
 }
 
