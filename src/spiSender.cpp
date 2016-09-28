@@ -27,6 +27,7 @@ void spiSender::init()
 void spiSender::trTest()
 {
 	int ret;
+	uint16_t delay = 0;
 	uint8_t tx[] = {
 		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 		0x40, 0x00, 0x00, 0x00, 0x00, 0x95,
@@ -43,9 +44,9 @@ void spiSender::trTest()
 	tr.tx_buf = (unsigned long)tx;
 	tr.rx_buf = (unsigned long)rx;
 	tr.len = ARRAY_SIZE(tx);
-	tr.delay_usecs = spi_delay;
+	tr.delay_usecs = delay;
 	tr.speed_hz = spi_speed;
-	tr.bits_per_word = bits;
+	tr.bits_per_word = spi_bits;
 
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
 	if (ret < 1)
@@ -64,7 +65,7 @@ void spiSender::transfer(unsigned char *byte)
 {
 	uint8_t tx[1] = {byte[0]};
 	uint8_t rx[1];
-	uint16_t delay;
+	uint16_t delay = 0;
 #ifndef TARGET_OSX
 	struct spi_ioc_transfer tr;
 	
