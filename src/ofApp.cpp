@@ -11,7 +11,7 @@ void ofApp::update()
 {
 	if (ofGetFrameNum() % 60 == 0)
 	{
-		int i = ofRandom(5);
+		int i = 0;
 
 		room.sendSpi_single(0, 0x04, i);
 		room.sendSpi_single(0, 0xFF, i);

@@ -78,6 +78,7 @@ void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 {
 	setSSPin(ss, true);
+	usleep(5000);
 	for (int i = 0;i < num;i++)
 	{
 		usleep(1000);
