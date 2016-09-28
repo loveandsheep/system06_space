@@ -43,6 +43,8 @@ void spiSender::transfer(unsigned char *byte)
 	tr.delay_usecs = delay;
 	tr.speed_hz = spi_speed;
 	tr.bits_per_word = spi_bits;
+	tr.cs_change = 0;
+	tr.pad = 0;
 	
 	int ret;
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
