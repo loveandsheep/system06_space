@@ -14,7 +14,7 @@ void ofApp::update()
 	
 	if (ofGetFrameNum() % 60 == 0)
 	{
-		unsigned char bt = 0x04;
+		unsigned char bt = 0xFF;
 		room.setSSPin(0, true);
 		usleep(5000);
 		cout << "send in ss" << endl;
