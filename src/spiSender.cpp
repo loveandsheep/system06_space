@@ -35,8 +35,8 @@ void spiSender::transfer(unsigned char *byte)
 	uint16_t delay;
 #ifndef TARGET_OSX
 	struct spi_ioc_transfer tr = {
-		.tx_buf = (*byte),
-		.rx_buf = &rx,
+		.tx_buf = (unsigned long)(*byte),
+		.rx_buf = (unsigned long)&rx,
 		.len = 1,
 		.delay_usecs = delay,
 		.speed_hz = spi_speed,
@@ -47,7 +47,7 @@ void spiSender::transfer(unsigned char *byte)
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
 	if (ret < 1) cout << "spi send failed" << endl;
 	
-	byte = rx;
+	*byte = rx;
 #endif
 }
 
