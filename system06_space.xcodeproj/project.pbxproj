@@ -26,8 +26,6 @@
 		B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */; };
 		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
 		C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC8881B3C8C0A1C45F042E7A /* OscPrintReceivedElements.cpp */; };
-		C69F0AFE1D9B88B500EB6636 /* libwiringPi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C69F0AFA1D9B88B500EB6636 /* libwiringPi.a */; settings = {ASSET_TAGS = (); }; };
-		C69F0AFF1D9B88B500EB6636 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C69F0AFB1D9B88B500EB6636 /* README.md */; settings = {ASSET_TAGS = (); }; };
 		C6B301231D97D35D008B893F /* roomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6B301211D97D35D008B893F /* roomManager.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -105,33 +103,6 @@
 		C2FAC65C491D4231379F3298 /* ofxOscReceiver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOscReceiver.cpp; path = ../../../addons/ofxOsc/src/ofxOscReceiver.cpp; sourceTree = SOURCE_ROOT; };
 		C58862C6D212C8E8A83810F4 /* ofxOscMessage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscMessage.h; path = ../../../addons/ofxOsc/src/ofxOscMessage.h; sourceTree = SOURCE_ROOT; };
 		C6937888E126BADC8777423B /* OscTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscTypes.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h; sourceTree = SOURCE_ROOT; };
-		C69F0AE11D9B88B500EB6636 /* drc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drc.h; sourceTree = "<group>"; };
-		C69F0AE21D9B88B500EB6636 /* mcp23008.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23008.h; sourceTree = "<group>"; };
-		C69F0AE31D9B88B500EB6636 /* mcp23016.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23016.h; sourceTree = "<group>"; };
-		C69F0AE41D9B88B500EB6636 /* mcp23016reg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23016reg.h; sourceTree = "<group>"; };
-		C69F0AE51D9B88B500EB6636 /* mcp23017.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23017.h; sourceTree = "<group>"; };
-		C69F0AE61D9B88B500EB6636 /* mcp23s08.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23s08.h; sourceTree = "<group>"; };
-		C69F0AE71D9B88B500EB6636 /* mcp23s17.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23s17.h; sourceTree = "<group>"; };
-		C69F0AE81D9B88B500EB6636 /* mcp23x08.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23x08.h; sourceTree = "<group>"; };
-		C69F0AE91D9B88B500EB6636 /* mcp23x0817.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp23x0817.h; sourceTree = "<group>"; };
-		C69F0AEA1D9B88B500EB6636 /* mcp3002.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp3002.h; sourceTree = "<group>"; };
-		C69F0AEB1D9B88B500EB6636 /* mcp3004.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp3004.h; sourceTree = "<group>"; };
-		C69F0AEC1D9B88B500EB6636 /* mcp3422.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp3422.h; sourceTree = "<group>"; };
-		C69F0AED1D9B88B500EB6636 /* mcp4802.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp4802.h; sourceTree = "<group>"; };
-		C69F0AEE1D9B88B500EB6636 /* pcf8574.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcf8574.h; sourceTree = "<group>"; };
-		C69F0AEF1D9B88B500EB6636 /* pcf8591.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcf8591.h; sourceTree = "<group>"; };
-		C69F0AF01D9B88B500EB6636 /* softPwm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = softPwm.h; sourceTree = "<group>"; };
-		C69F0AF11D9B88B500EB6636 /* softServo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = softServo.h; sourceTree = "<group>"; };
-		C69F0AF21D9B88B500EB6636 /* softTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = softTone.h; sourceTree = "<group>"; };
-		C69F0AF31D9B88B500EB6636 /* sr595.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sr595.h; sourceTree = "<group>"; };
-		C69F0AF41D9B88B500EB6636 /* wiringPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringPi.h; sourceTree = "<group>"; };
-		C69F0AF51D9B88B500EB6636 /* wiringPiI2C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringPiI2C.h; sourceTree = "<group>"; };
-		C69F0AF61D9B88B500EB6636 /* wiringPiSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringPiSPI.h; sourceTree = "<group>"; };
-		C69F0AF71D9B88B500EB6636 /* wiringSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringSerial.h; sourceTree = "<group>"; };
-		C69F0AF81D9B88B500EB6636 /* wiringShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringShift.h; sourceTree = "<group>"; };
-		C69F0AFA1D9B88B500EB6636 /* libwiringPi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwiringPi.a; sourceTree = "<group>"; };
-		C69F0AFB1D9B88B500EB6636 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C69F0AFD1D9B88B500EB6636 /* ofxWiringPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxWiringPi.h; sourceTree = "<group>"; };
 		C6B301211D97D35D008B893F /* roomManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roomManager.cpp; sourceTree = "<group>"; };
 		C6B301221D97D35D008B893F /* roomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = roomManager.h; sourceTree = "<group>"; };
 		C70D8946940288799E82131E /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSliderGroup.h; path = ../../../addons/ofxGui/src/ofxSliderGroup.h; sourceTree = SOURCE_ROOT; };
@@ -158,7 +129,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C69F0AFE1D9B88B500EB6636 /* libwiringPi.a in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,64 +247,6 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		C69F0ADF1D9B88B500EB6636 /* ofxWiringPi */ = {
-			isa = PBXGroup;
-			children = (
-				C69F0AE01D9B88B500EB6636 /* include */,
-				C69F0AF91D9B88B500EB6636 /* lib */,
-				C69F0AFB1D9B88B500EB6636 /* README.md */,
-				C69F0AFC1D9B88B500EB6636 /* src */,
-			);
-			path = ofxWiringPi;
-			sourceTree = "<group>";
-		};
-		C69F0AE01D9B88B500EB6636 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				C69F0AE11D9B88B500EB6636 /* drc.h */,
-				C69F0AE21D9B88B500EB6636 /* mcp23008.h */,
-				C69F0AE31D9B88B500EB6636 /* mcp23016.h */,
-				C69F0AE41D9B88B500EB6636 /* mcp23016reg.h */,
-				C69F0AE51D9B88B500EB6636 /* mcp23017.h */,
-				C69F0AE61D9B88B500EB6636 /* mcp23s08.h */,
-				C69F0AE71D9B88B500EB6636 /* mcp23s17.h */,
-				C69F0AE81D9B88B500EB6636 /* mcp23x08.h */,
-				C69F0AE91D9B88B500EB6636 /* mcp23x0817.h */,
-				C69F0AEA1D9B88B500EB6636 /* mcp3002.h */,
-				C69F0AEB1D9B88B500EB6636 /* mcp3004.h */,
-				C69F0AEC1D9B88B500EB6636 /* mcp3422.h */,
-				C69F0AED1D9B88B500EB6636 /* mcp4802.h */,
-				C69F0AEE1D9B88B500EB6636 /* pcf8574.h */,
-				C69F0AEF1D9B88B500EB6636 /* pcf8591.h */,
-				C69F0AF01D9B88B500EB6636 /* softPwm.h */,
-				C69F0AF11D9B88B500EB6636 /* softServo.h */,
-				C69F0AF21D9B88B500EB6636 /* softTone.h */,
-				C69F0AF31D9B88B500EB6636 /* sr595.h */,
-				C69F0AF41D9B88B500EB6636 /* wiringPi.h */,
-				C69F0AF51D9B88B500EB6636 /* wiringPiI2C.h */,
-				C69F0AF61D9B88B500EB6636 /* wiringPiSPI.h */,
-				C69F0AF71D9B88B500EB6636 /* wiringSerial.h */,
-				C69F0AF81D9B88B500EB6636 /* wiringShift.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		C69F0AF91D9B88B500EB6636 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				C69F0AFA1D9B88B500EB6636 /* libwiringPi.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		C69F0AFC1D9B88B500EB6636 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				C69F0AFD1D9B88B500EB6636 /* ofxWiringPi.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		D27B2221A225CA523C019676 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,7 +285,6 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				C6B301221D97D35D008B893F /* roomManager.h */,
 				C6B301211D97D35D008B893F /* roomManager.cpp */,
-				C69F0ADF1D9B88B500EB6636 /* ofxWiringPi */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -503,7 +414,6 @@
 				C6B301231D97D35D008B893F /* roomManager.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
-				C69F0AFF1D9B88B500EB6636 /* README.md in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,

@@ -21,7 +21,8 @@ void roomManager::setup(int row, int column)
 		units.push_back(un);
 	}
 	
-	int speed = 5000;
+#ifndef TARGET_OSX
+	int speed = 500000;
 	if ((wiringPiSPISetup (0, speed)) < 0) {
 		printf("wiringPiSPISetup error \n");
 	}
@@ -35,11 +36,7 @@ void roomManager::setup(int row, int column)
 	pinMode(SSPIN_C, OUTPUT);
 	pinMode(SSPIN_D, OUTPUT);
 	pinMode(SSPIN_E, OUTPUT);
-
-//	pinMode(9, INPUT);//MISO
-//	pinMode(10, OUTPUT);//MOSI
-//	pinMode(11, OUTPUT);//CLk
-	
+#endif
 	
 }
 

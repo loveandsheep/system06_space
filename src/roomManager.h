@@ -10,7 +10,10 @@
 #define roomManager_h
 
 #include "ofMain.h"
-#include "ofxWiringPi.h"
+
+#ifndef TARGET_OSX
+#include <wiringPi.h>
+#endif
 
 #define SSPIN_A 5
 #define SSPIN_B 10
