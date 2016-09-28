@@ -14,15 +14,13 @@ void ofApp::update()
 	
 	if (ofGetFrameNum() % 60 == 0)
 	{
-		unsigned char bt = 0xFF;
+		unsigned char bt = 0xA2;
 		room.setSSPin(0, true);
 		usleep(5000);
-		cout << "send in ss" << endl;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
 
-		cout << "send innot ss" << endl;
-		spiSender::transfer(&bt);
+		cout << "signal :" << bt << endl;
 
 		int i = 0;
 
