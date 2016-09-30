@@ -10,9 +10,9 @@
 #define roomManager_h
 
 #include "ofMain.h"
+#include "spiSender.h"
 
 #ifndef TARGET_OSX
-#include <wiringPiSPI.h>
 #include <wiringPi.h>
 #endif
 

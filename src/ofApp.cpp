@@ -3,7 +3,6 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	spiSender::init();
 	room.setup(5, 1);
 }
 
@@ -13,14 +12,38 @@ void ofApp::update()
 	
 	if (ofGetFrameNum() % 60 == 0)
 	{
-		unsigned char bts[] = {0x04, 0x00, 0x04, 0xFF};
-		unsigned char bt = bts[(ofGetFrameNum() / 60) % 4];
-		cout << "signal :" << int(bt) << endl;
-		room.setSSPin(0, true);
-		usleep(5000);
-		spiSender::transfer(&bt);
-		room.setSSPin(0, false);
+		room.sendSpi_single(0, 0x04, 0);
+		room.sendSpi_single(0, 0x00, 0);
 
+		room.sendSpi_single(0, 0x04, 1);
+		room.sendSpi_single(0, 0xFF, 1);
+
+		room.sendSpi_single(0, 0x04, 2);
+		room.sendSpi_single(0, 0xFF, 2);
+	}
+
+	if (ofGetFrameNum() % 60 == 20)
+	{
+		room.sendSpi_single(0, 0x04, 0);
+		room.sendSpi_single(0, 0xFF, 0);
+
+		room.sendSpi_single(0, 0x04, 1);
+		room.sendSpi_single(0, 0x00, 1);
+
+		room.sendSpi_single(0, 0x04, 2);
+		room.sendSpi_single(0, 0x00, 2);
+	}
+
+	if (ofGetFrameNum() % 60 == 40)
+	{
+		room.sendSpi_single(0, 0x04, 0);
+		room.sendSpi_single(0, 0xFF, 0);
+
+		room.sendSpi_single(0, 0x04, 1);
+		room.sendSpi_single(0, 0xFF, 1);
+
+		room.sendSpi_single(0, 0x04, 2);
+		room.sendSpi_single(0, 0x00, 2);
 	}
 }
 
