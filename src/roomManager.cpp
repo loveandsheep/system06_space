@@ -79,27 +79,27 @@ void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 {
 	setSSPin(ss, true);
-	usleep(1000);
+	usleep(100);
 	for (int i = 0;i < num;i++)
 	{
 		spiSender::transfer(&bytes[i]);
 	}
 	setSSPin(ss, false);
-	usleep(1000);
+	usleep(100);
 }
 
 void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
 {
 	setSSPin(ss, true);
-	usleep(1000);
+	usleep(100);
 	for (int i = 0;i < num;i++)
 	{
 		dst[i] = 0x00;
 		spiSender::transfer(&dst[i]);
 	}
-	usleep(1000);
+	usleep(100);
 	setSSPin(ss, false);
-	usleep(5000);
+	usleep(100);
 }
 
 void roomManager::setSSPin(int num, bool val)
