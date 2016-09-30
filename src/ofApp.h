@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "spiSender.h"
 #include "roomManager.h"
 
 class ofApp : public ofBaseApp{
