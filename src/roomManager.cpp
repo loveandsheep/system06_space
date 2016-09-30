@@ -32,10 +32,10 @@ void roomManager::setup(int row, int column)
 		printf("GPIO ERROR! \n");
 	}
 	pinMode(SSPIN_A, OUTPUT);
-	pinMode(SSPIN_B, OUTPUT);
-	pinMode(SSPIN_C, OUTPUT);
-	pinMode(SSPIN_D, OUTPUT);
-	pinMode(SSPIN_E, OUTPUT);
+//	pinMode(SSPIN_B, OUTPUT);
+//	pinMode(SSPIN_C, OUTPUT);
+//	pinMode(SSPIN_D, OUTPUT);
+//	pinMode(SSPIN_E, OUTPUT);
 #endif
 	
 }
