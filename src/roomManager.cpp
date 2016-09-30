@@ -21,7 +21,7 @@ void roomManager::setup(int row, int column)
 		units.push_back(un);
 	}
 
-	spiSender::init();
+//	spiSender::init();
 
 #ifndef TARGET_OSX
 	int speed = 500000;
