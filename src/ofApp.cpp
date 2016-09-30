@@ -13,61 +13,13 @@ void ofApp::update()
 	
 	if (ofGetFrameNum() % 60 == 0)
 	{
-//		spiSender::trTest();
-		unsigned char bt;
-
+		unsigned char bt = 4;
 		room.setSSPin(0, true);
 		usleep(5000);
-		bt = 0x04;
-		spiSender::transfer(&bt);
-		room.setSSPin(0, false);
-		usleep(5000);
-
-		cout << "send :" << (int)(bt) << endl;
-
-		room.setSSPin(0, true);
-		usleep(5000);
-		bt = 0x00;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
 
-		cout << "send :" << (int)(bt) << endl;
-//		int i = 0;
-//
-//		room.sendSpi_single(0, 0x04, i);
-//		room.sendSpi_single(0, 0xFF, i);
-//
-//		usleep(10000);
-//		room.sendSpi_single(0, 0x02, i);
-//
-//		usleep(300000);
-//		room.sendSpi_single(0, 0x03, i);
-//		
-//		usleep(10000);
-//		room.sendSpi_single(0, 0x04, i);
-//		room.sendSpi_single(0, 0x00, i);
-
-		
-//		cout << "out :" << i << endl;
-	}
-
-	if (ofGetFrameNum() % 60 == 30)
-	{
-		unsigned char bt;
-		room.setSSPin(0, true);
-		usleep(5000);
-		bt = 0x04;
-		spiSender::transfer(&bt);
-		room.setSSPin(0, false);
-		usleep(5000);
-		cout << "send :" << (int)(bt) << endl;
-
-		room.setSSPin(0, true);
-		usleep(5000);
-		bt = 0xFF;
-		spiSender::transfer(&bt);
-		room.setSSPin(0, false);
-		cout << "send :" << (int)(bt) << endl;
+		cout << "signal :" << int(bt) << endl;
 	}
 }
 
