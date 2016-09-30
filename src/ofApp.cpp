@@ -9,43 +9,47 @@ void ofApp::setup()
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	
-	if (ofGetFrameNum() % 60 == 0)
+
+	for (int i = 0;i < 3;i++)
 	{
-		cout << "send to 0 " << endl;
-		room.sendSpi_single(0, 0x04, 0);
-		room.sendSpi_single(0, 0x00, 0);
+		if (ofGetFrameNum() % 60 == 0)
+		{
+			cout << "send to 0 " << endl;
+			room.sendSpi_single(i, 0x04, 0);
+			room.sendSpi_single(i, 0x00, 0);
 
-		room.sendSpi_single(0, 0x04, 1);
-		room.sendSpi_single(0, 0xFF, 1);
+			room.sendSpi_single(i, 0x04, 1);
+			room.sendSpi_single(i, 0xFF, 1);
 
-		room.sendSpi_single(0, 0x04, 2);
-		room.sendSpi_single(0, 0xFF, 2);
-	}
+			room.sendSpi_single(i, 0x04, 2);
+			room.sendSpi_single(i, 0xFF, 2);
+		}
 
-	if (ofGetFrameNum() % 60 == 20)
-	{
-		cout << "send to 1 " << endl;
-		room.sendSpi_single(0, 0x04, 0);
-		room.sendSpi_single(0, 0xFF, 0);
+		if (ofGetFrameNum() % 60 == 20)
+		{
+			cout << "send to 1 " << endl;
+			room.sendSpi_single(i, 0x04, 0);
+			room.sendSpi_single(i, 0xFF, 0);
 
-		room.sendSpi_single(0, 0x04, 1);
-		room.sendSpi_single(0, 0x00, 1);
+			room.sendSpi_single(i, 0x04, 1);
+			room.sendSpi_single(i, 0x00, 1);
 
-		room.sendSpi_single(0, 0x04, 2);
-		room.sendSpi_single(0, 0xFF, 2);
-	}
+			room.sendSpi_single(i, 0x04, 2);
+			room.sendSpi_single(i, 0xFF, 2);
+		}
 
-	if (ofGetFrameNum() % 60 == 40)
-	{
-		room.sendSpi_single(0, 0x04, 0);
-		room.sendSpi_single(0, 0xFF, 0);
+		if (ofGetFrameNum() % 60 == 40)
+		{
+			room.sendSpi_single(i, 0x04, 0);
+			room.sendSpi_single(i, 0xFF, 0);
 
-		room.sendSpi_single(0, 0x04, 1);
-		room.sendSpi_single(0, 0xFF, 1);
+			room.sendSpi_single(i, 0x04, 1);
+			room.sendSpi_single(i, 0xFF, 1);
 
-		room.sendSpi_single(0, 0x04, 2);
-		room.sendSpi_single(0, 0x00, 2);
+			room.sendSpi_single(i, 0x04, 2);
+			room.sendSpi_single(i, 0x00, 2);
+		}
+
 	}
 }
 
