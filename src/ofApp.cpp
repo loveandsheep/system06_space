@@ -10,18 +10,18 @@ void ofApp::setup()
 void ofApp::update()
 {
 	
-//	if (ofGetFrameNum() % 60 == 0)
-//	{
-//		
-//		room.sendSpi_single(0, 0x04, 0);
-//		room.sendSpi_single(0, 0x00, 0);
-//
-//		room.sendSpi_single(0, 0x04, 1);
-//		room.sendSpi_single(0, 0xFF, 1);
-//
-//		room.sendSpi_single(0, 0x04, 2);
-//		room.sendSpi_single(0, 0xFF, 2);
-//	}
+	if (ofGetFrameNum() % 60 == 0)
+	{
+		
+		room.sendSpi_single(0, 0x04, 0);
+		room.sendSpi_single(0, 0x00, 0);
+
+		room.sendSpi_single(0, 0x04, 1);
+		room.sendSpi_single(0, 0xFF, 1);
+
+		room.sendSpi_single(0, 0x04, 2);
+		room.sendSpi_single(0, 0xFF, 2);
+	}
 //
 //	if (ofGetFrameNum() % 60 == 20)
 //	{
