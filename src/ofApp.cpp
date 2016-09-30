@@ -22,6 +22,7 @@ void ofApp::update()
 		bt = 0x04;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
+		usleep(5000);
 
 		room.setSSPin(0, true);
 		usleep(5000);
@@ -56,6 +57,7 @@ void ofApp::update()
 		bt = 0x04;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
+		usleep(5000);
 
 		room.setSSPin(0, true);
 		usleep(5000);
