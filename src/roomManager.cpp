@@ -69,10 +69,6 @@ void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 		bts[i] = (i == num ? dat : 0x00);
 	}
 
-	cout << "signal chain :";
-	for (int i = 0;i < getNumRow();i++) cout << " " << (int)(bts[i]);
-	cout << endl;
-
 	sendSpi_chain(ss, bts, getNumRow());
 }
 
@@ -83,8 +79,8 @@ void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 	for (int i = 0;i < num;i++)
 	{
 		usleep(1000);
-		spiSender::transfer(&bytes[i]);
 		cout << "send from chain :" << (int)(bytes[i]) << endl;
+		spiSender::transfer(&bytes[i]);
 	}
 	setSSPin(ss, false);
 	usleep(5000);
