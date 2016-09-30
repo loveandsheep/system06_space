@@ -15,14 +15,19 @@ void ofApp::update()
 	if (ofGetFrameNum() % 60 == 0)
 	{
 //		spiSender::trTest();
+		unsigned char bt;
 
-		unsigned char bt = 154;
 		room.setSSPin(0, true);
 		usleep(5000);
+		bt = 0x04;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
 
-		cout << "signal :" << int(bt) << endl;
+		room.setSSPin(0, true);
+		usleep(5000);
+		bt = 0x00;
+		spiSender::transfer(&bt);
+		room.setSSPin(0, false);
 
 //		int i = 0;
 //
@@ -41,6 +46,22 @@ void ofApp::update()
 
 		
 //		cout << "out :" << i << endl;
+	}
+
+	if (ofGetFrameNum() % 60 == 30)
+	{
+		unsigned char bt;
+		room.setSSPin(0, true);
+		usleep(5000);
+		bt = 0x04;
+		spiSender::transfer(&bt);
+		room.setSSPin(0, false);
+
+		room.setSSPin(0, true);
+		usleep(5000);
+		bt = 0xFF;
+		spiSender::transfer(&bt);
+		room.setSSPin(0, false);
 	}
 }
 
