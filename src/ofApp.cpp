@@ -23,13 +23,15 @@ void ofApp::update()
 		room.setSSPin(0, false);
 		usleep(5000);
 
+		cout << "send :" << bt << endl;
+
 		room.setSSPin(0, true);
 		usleep(5000);
 		bt = 0x00;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
 
-		cout << "send 04 00" << endl;
+		cout << "send :" << bt << endl;
 //		int i = 0;
 //
 //		room.sendSpi_single(0, 0x04, i);
@@ -58,13 +60,14 @@ void ofApp::update()
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
 		usleep(5000);
+		cout << "send :" << bt << endl;
 
 		room.setSSPin(0, true);
 		usleep(5000);
 		bt = 0xFF;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
-		cout << "send 04 FF" << endl;
+		cout << "send :" << bt << endl;
 	}
 }
 
