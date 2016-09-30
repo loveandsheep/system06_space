@@ -109,7 +109,6 @@ void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
 
 void roomManager::setSSPin(int num, bool val)
 {
-	return;
 	int pins[] = {SSPIN_A, SSPIN_B, SSPIN_C, SSPIN_D, SSPIN_E};
 #ifndef TARGET_OSX
 	digitalWrite(pins[num], val);
