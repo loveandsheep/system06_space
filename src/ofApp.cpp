@@ -13,13 +13,14 @@ void ofApp::update()
 	
 	if (ofGetFrameNum() % 60 == 0)
 	{
-		unsigned char bt = 4;
+		unsigned char bts[] = {0x04, 0x00, 0x04, 0xFF};
+		unsigned char bt = bts[(ofGetFrameNum() / 60) % 4];
+		cout << "signal :" << int(bt) << endl;
 		room.setSSPin(0, true);
 		usleep(5000);
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
 
-		cout << "signal :" << int(bt) << endl;
 	}
 }
 
