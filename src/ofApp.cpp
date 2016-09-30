@@ -22,18 +22,18 @@ void ofApp::update()
 		room.sendSpi_single(0, 0x04, 2);
 		room.sendSpi_single(0, 0xFF, 2);
 	}
-//
-//	if (ofGetFrameNum() % 60 == 20)
-//	{
-//		room.sendSpi_single(0, 0x04, 0);
-//		room.sendSpi_single(0, 0xFF, 0);
-//
-//		room.sendSpi_single(0, 0x04, 1);
-//		room.sendSpi_single(0, 0x00, 1);
-//
-//		room.sendSpi_single(0, 0x04, 2);
-//		room.sendSpi_single(0, 0x00, 2);
-//	}
+
+	if (ofGetFrameNum() % 60 == 20)
+	{
+		room.sendSpi_single(0, 0x04, 0);
+		room.sendSpi_single(0, 0xFF, 0);
+
+		room.sendSpi_single(0, 0x04, 1);
+		room.sendSpi_single(0, 0x00, 1);
+
+		room.sendSpi_single(0, 0x04, 2);
+		room.sendSpi_single(0, 0x00, 2);
+	}
 //
 //	if (ofGetFrameNum() % 60 == 40)
 //	{
