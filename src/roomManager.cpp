@@ -79,8 +79,8 @@ void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 	for (int i = 0;i < num;i++)
 	{
 		usleep(1000);
-		spiSender::transfer(bytes);
-		cout << "send from chain :" << int(*bytes) << endl;
+		spiSender::transfer(&bytes[i]);
+		cout << "send from chain :" << int(bytes[i]) << endl;
 	}
 	setSSPin(ss, false);
 	usleep(5000);
