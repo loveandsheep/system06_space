@@ -27,15 +27,15 @@ void roomManager::setup(int row, int column)
 //		printf("wiringPiSPISetup error \n");
 //	}
 	
-//	if (wiringPiSetupGpio() == -1)
-//	{
-//		printf("GPIO ERROR! \n");
-//	}
-//	pinMode(SSPIN_A, OUTPUT);
-//	pinMode(SSPIN_B, OUTPUT);
-//	pinMode(SSPIN_C, OUTPUT);
-//	pinMode(SSPIN_D, OUTPUT);
-//	pinMode(SSPIN_E, OUTPUT);
+	if (wiringPiSetupGpio() == -1)
+	{
+		printf("GPIO ERROR! \n");
+	}
+	pinMode(SSPIN_A, OUTPUT);
+	pinMode(SSPIN_B, OUTPUT);
+	pinMode(SSPIN_C, OUTPUT);
+	pinMode(SSPIN_D, OUTPUT);
+	pinMode(SSPIN_E, OUTPUT);
 #endif
 	
 }

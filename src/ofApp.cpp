@@ -30,6 +30,7 @@ void ofApp::update()
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
 
+		cout << "send 04 00" << endl;
 //		int i = 0;
 //
 //		room.sendSpi_single(0, 0x04, i);
@@ -64,6 +65,7 @@ void ofApp::update()
 		bt = 0xFF;
 		spiSender::transfer(&bt);
 		room.setSSPin(0, false);
+		cout << "send 04 FF" << endl;
 	}
 }
 
