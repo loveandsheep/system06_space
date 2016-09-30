@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	room.setup(5, 1);
+	room.setup(3, 1);
 }
 
 //--------------------------------------------------------------
@@ -12,7 +12,7 @@ void ofApp::update()
 	
 	if (ofGetFrameNum() % 60 == 0)
 	{
-		
+		cout << "send to 0 " << endl;
 		room.sendSpi_single(0, 0x04, 0);
 		room.sendSpi_single(0, 0x00, 0);
 
@@ -25,6 +25,7 @@ void ofApp::update()
 
 	if (ofGetFrameNum() % 60 == 20)
 	{
+		cout << "send to 1 " << endl;
 		room.sendSpi_single(0, 0x04, 0);
 		room.sendSpi_single(0, 0xFF, 0);
 
