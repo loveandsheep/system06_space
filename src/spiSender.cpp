@@ -75,6 +75,7 @@ void spiSender::transfer(unsigned char *byte)
 #ifndef TARGET_OSX
 	struct spi_ioc_transfer tr;
 	
+	memset(&tr, 0, sizeof(tr));
 	tr.tx_buf = (unsigned long)tx;
 	tr.rx_buf = (unsigned long)rx;
 	tr.len = 1;
