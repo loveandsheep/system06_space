@@ -17,9 +17,9 @@
 #endif
 
 #define SSPIN_A 5
-#define SSPIN_B 6
+#define SSPIN_B 19
 #define SSPIN_C 13
-#define SSPIN_D 19
+#define SSPIN_D 6
 #define SSPIN_E 26
 
 class rmUnit{
