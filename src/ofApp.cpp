@@ -14,7 +14,6 @@ void ofApp::update()
 	{
 		if (ofGetFrameNum() % 60 == 0)
 		{
-			room.sendSpi_single(i, 0x02, 0);
 
 			room.sendSpi_single(i, 0x04, 0);
 			room.sendSpi_single(i, 0x20, 0);
@@ -25,12 +24,14 @@ void ofApp::update()
 			room.sendSpi_single(i, 0x04, 2);
 			room.sendSpi_single(i, 0xFF, 2);
 
+			room.sendSpi_single(i, 0x02, 0);
+			usleep(5000);
 			room.sendSpi_single(i, 0x03, 0);
 		}
 
 		if (ofGetFrameNum() % 60 == 20)
 		{
-			room.sendSpi_single(i, 0x02, 1);
+
 			room.sendSpi_single(i, 0x04, 0);
 			room.sendSpi_single(i, 0xFF, 0);
 
@@ -40,13 +41,13 @@ void ofApp::update()
 			room.sendSpi_single(i, 0x04, 2);
 			room.sendSpi_single(i, 0xFF, 2);
 
+			room.sendSpi_single(i, 0x02, 1);
+			usleep(5000);
 			room.sendSpi_single(i, 0x03, 1);
 		}
 
 		if (ofGetFrameNum() % 60 == 40)
 		{
-			room.sendSpi_single(i, 0x02, 2);
-
 			room.sendSpi_single(i, 0x04, 0);
 			room.sendSpi_single(i, 0xFF, 0);
 
@@ -56,6 +57,8 @@ void ofApp::update()
 			room.sendSpi_single(i, 0x04, 2);
 			room.sendSpi_single(i, 0x20, 2);
 
+			room.sendSpi_single(i, 0x02, 2);
+			usleep(5000);
 			room.sendSpi_single(i, 0x03, 2);
 		}
 
