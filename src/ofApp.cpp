@@ -17,7 +17,7 @@ void ofApp::update()
 			room.sendSpi_single(i, 0x02, 0);
 
 			room.sendSpi_single(i, 0x04, 0);
-			room.sendSpi_single(i, 0x80, 0);
+			room.sendSpi_single(i, 0x20, 0);
 
 			room.sendSpi_single(i, 0x04, 1);
 			room.sendSpi_single(i, 0xFF, 1);
@@ -35,7 +35,7 @@ void ofApp::update()
 			room.sendSpi_single(i, 0xFF, 0);
 
 			room.sendSpi_single(i, 0x04, 1);
-			room.sendSpi_single(i, 0x80, 1);
+			room.sendSpi_single(i, 0x20, 1);
 
 			room.sendSpi_single(i, 0x04, 2);
 			room.sendSpi_single(i, 0xFF, 2);
@@ -54,7 +54,7 @@ void ofApp::update()
 			room.sendSpi_single(i, 0xFF, 1);
 
 			room.sendSpi_single(i, 0x04, 2);
-			room.sendSpi_single(i, 0x80, 2);
+			room.sendSpi_single(i, 0x20, 2);
 
 			room.sendSpi_single(i, 0x03, 2);
 		}
