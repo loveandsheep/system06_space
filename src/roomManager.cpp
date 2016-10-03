@@ -41,7 +41,6 @@ void roomManager::setup(int row, int column)
 
 void roomManager::update()
 {
-	cout << "===" << endl;
 	for (int i = 0;i < getNumRow();i++)
 	{
 		unsigned char sig[getNumColumn()];
@@ -52,15 +51,13 @@ void roomManager::update()
 		sendSpi_chain (brokenCh[i], sig, getNumColumn());
 		inputSpi_chain(brokenCh[i], sig, getNumColumn());
 
-		cout << (int)(sig[0]) << "\t" << (int)(sig[1]) << "\t" << (int)(sig[2]) << endl;
-
 		for (int j = 0;j < getNumColumn();j++)
 		{
 			unsigned char val = sig[j];
 			if ((val != 128) && (val != 129))
 				units[i][j].curAnalog = val;
 			
-			if (units[i][j].curAnalog > 5)
+			if (units[i][j].curAnalog > 3)
 			{
 				sendSpi_single(brokenCh[i], 0x04, j);
 				sendSpi_single(brokenCh[i], 0x00, j);
