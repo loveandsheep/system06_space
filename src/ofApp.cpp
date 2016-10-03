@@ -10,7 +10,7 @@ void ofApp::setup()
 void ofApp::update()
 {
 
-	if (ofGetFrameNum() % 60 == 0)
+	if (ofGetFrameNum() % 10 == 0)
 	{
 		unsigned char sig[3] = {0x01, 0x01, 0x01};
 		room.sendSpi_chain(0, sig, 3);
