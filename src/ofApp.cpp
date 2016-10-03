@@ -13,11 +13,11 @@ void ofApp::update()
 	if (ofGetFrameNum() % 1 == 0)
 	{
 		cout << "===" << endl;
-		for (int i = 0;i < 1;i++)
+		for (int i = 0;i < 4;i++)
 		{
 			unsigned char sig[3] = {0x01, 0x01, 0x01};
-			room.sendSpi_chain(2, sig, 3);
-			room.inputSpi_chain(2, sig, 3);
+			room.sendSpi_chain(i, sig, 3);
+			room.inputSpi_chain(i, sig, 3);
 
 			cout << (int)(sig[0]) << ",\t" << (int)(sig[1]) << ",\t" << (int)(sig[2]) << endl;
 		}
