@@ -124,6 +124,7 @@ void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 
 void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 {
+	usleep(1000);
 	setSSPin(ss, true);
 	usleep(1000);
 	for (int i = 0;i < num;i++)
@@ -132,10 +133,12 @@ void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 	}
 	usleep(1000);
 	setSSPin(ss, false);
+	usleep(1000);
 }
 
 void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
 {
+	usleep(1000);
 	setSSPin(ss, true);
 	usleep(1000);
 	for (int i = 0;i < num;i++)
@@ -145,6 +148,7 @@ void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
 	}
 	usleep(1000);
 	setSSPin(ss, false);
+	usleep(1000);
 }
 
 void roomManager::setSSPin(int num, bool val)
