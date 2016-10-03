@@ -77,11 +77,12 @@ void roomManager::update()
 		}
 	}
 
-	if (ofGetFrameNum() % 120 == 0)
+	if (ofGetFrameNum() % 30 == 0)
 	{
 		int r = ofRandom(getNumRow());
 		int c = ofRandom(getNumColumn());
 
+		cout << "bang " << r << "," << c << endl;
 		if (units[r][c].curAnalog > 3)
 		{
 			bang(r, c);
