@@ -13,7 +13,7 @@ void ofApp::update()
 	if (ofGetFrameNum() % 10 == 0)
 	{
 		cout << "===" << endl;
-		for (int i = 0;i < 3;i++)
+		for (int i = 0;i < 4;i++)
 		{
 			unsigned char sig[3] = {0x01, 0x00, 0x00};
 			room.sendSpi_chain(i, sig, 3);
