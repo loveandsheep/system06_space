@@ -36,7 +36,8 @@ public:
 	
 	//ROW...SPIで接続されたユニット(短辺)
 	//column...デイジーチェーンのユニット
-	
+	static const int brokenCh[] = {0, 2, 3};
+
 	void setup(int row, int column);
 	
 	void update();
