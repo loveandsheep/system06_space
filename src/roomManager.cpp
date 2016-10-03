@@ -47,26 +47,28 @@ void roomManager::update()
 		unsigned char sig[getNumColumn()];
 
 		for (int o = 0;o < getNumColumn();o++) sig[o] = 0x01;
-		sendSpi_chain (i, sig, getNumColumn());
-		inputSpi_chain(i, sig, getNumColumn());
+		int brokenCh[] = {0, 2, 3};
+
+		sendSpi_chain (brokenCh[i], sig, getNumColumn());
+		inputSpi_chain(brokenCh[i], sig, getNumColumn());
 
 		cout << (int)(sig[0]) << "\t" << (int)(sig[1]) << "\t" << (int)(sig[2]) << endl;
 
 		for (int j = 0;j < getNumColumn();j++)
 		{
-			unsigned char val = sig[getNumColumn() - (j + 1)];
+			unsigned char val = sig[j];
 			if ((val != 128) && (val != 129))
 				units[i][j].curAnalog = val;
 			
 			if (units[i][j].curAnalog > 5)
 			{
-				sendSpi_single(i, 0x04, j);
-				sendSpi_single(i, 0x00, j);
+				sendSpi_single(brokenCh[i], 0x04, j);
+				sendSpi_single(brokenCh[i], 0x00, j);
 			}
 			else
 			{
-				sendSpi_single(i, 0x04, j);
-				sendSpi_single(i, 0xFF, j);
+				sendSpi_single(brokenCh[i], 0x04, j);
+				sendSpi_single(brokenCh[i], 0xFF, j);
 			}
 		}
 	}
@@ -124,7 +126,7 @@ void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 
 void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 {
-	usleep(1000);
+	usleep(500);
 	setSSPin(ss, true);
 	usleep(1000);
 	for (int i = 0;i < num;i++)
@@ -133,12 +135,12 @@ void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 	}
 	usleep(1000);
 	setSSPin(ss, false);
-	usleep(1000);
+	usleep(500);
 }
 
 void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
 {
-	usleep(1000);
+	usleep(500);
 	setSSPin(ss, true);
 	usleep(1000);
 	for (int i = 0;i < num;i++)
@@ -148,7 +150,7 @@ void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
 	}
 	usleep(1000);
 	setSSPin(ss, false);
-	usleep(1000);
+	usleep(500);
 }
 
 void roomManager::setSSPin(int num, bool val)
