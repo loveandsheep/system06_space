@@ -10,28 +10,30 @@ void ofApp::setup()
 void ofApp::update()
 {
 
-	if (ofGetFrameNum() % 1 == 0)
-	{
-		cout << "===" << endl;
-		for (int i = 0;i < 4;i++)
-		{
-			unsigned char sig[3] = {0x01, 0x01, 0x01};
-			room.sendSpi_chain(i, sig, 3);
-			room.inputSpi_chain(i, sig, 3);
-
-			cout << (int)(sig[0]) << ",\t" << (int)(sig[1]) << ",\t" << (int)(sig[2]) << endl;
-		}
-
-		for (int i = 0;i < 4;i++)
-		{
-			room.sendSpi_single(i, 0x04, 0);
-			room.sendSpi_single(i, 0xFF, 0);
-			room.sendSpi_single(i, 0x04, 1);
-			room.sendSpi_single(i, 0xFF, 1);
-			room.sendSpi_single(i, 0x04, 2);
-			room.sendSpi_single(i, 0xFF, 2);
-		}
-	}
+	room.update();
+	
+//	if (ofGetFrameNum() % 1 == 0)
+//	{
+//		cout << "===" << endl;
+//		for (int i = 0;i < 4;i++)
+//		{
+//			unsigned char sig[3] = {0x01, 0x01, 0x01};
+//			room.sendSpi_chain(i, sig, 3);
+//			room.inputSpi_chain(i, sig, 3);
+//
+//			cout << (int)(sig[0]) << ",\t" << (int)(sig[1]) << ",\t" << (int)(sig[2]) << endl;
+//		}
+//
+//		for (int i = 0;i < 4;i++)
+//		{
+//			room.sendSpi_single(i, 0x04, 0);
+//			room.sendSpi_single(i, 0xFF, 0);
+//			room.sendSpi_single(i, 0x04, 1);
+//			room.sendSpi_single(i, 0xFF, 1);
+//			room.sendSpi_single(i, 0x04, 2);
+//			room.sendSpi_single(i, 0xFF, 2);
+//		}
+//	}
 
 //	for (int i = 0;i < 4;i++)
 //	{

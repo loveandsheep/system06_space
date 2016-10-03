@@ -34,6 +34,9 @@ public:
 class roomManager{
 public:
 	
+	//ROW...SPIで接続されたユニット(短辺)
+	//column...デイジーチェーンのユニット
+	
 	void setup(int row, int column);
 	
 	void update();
@@ -49,7 +52,7 @@ public:
 	vector <vector<rmUnit> > units;
 	
 	void sendSpi_single(int ss, unsigned char dat, int num);
-	void sendSpi_chain(int ss, unsigned char* bytes, int num);
+	void sendSpi_chain (int ss, unsigned char* bytes, int num);
 	void inputSpi_chain(int ss, unsigned char* dst, int num);
 	
 	void setSSPin(int num, bool val);

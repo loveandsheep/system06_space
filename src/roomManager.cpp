@@ -24,7 +24,7 @@ void roomManager::setup(int row, int column)
 	spiSender::init();
 
 #ifndef TARGET_OSX
-	int speed = 500000;
+	int speed = 1000000;
 	
 	if (wiringPiSetupGpio() == -1)
 	{
@@ -37,6 +37,29 @@ void roomManager::setup(int row, int column)
 	pinMode(SSPIN_E, OUTPUT);
 #endif
 	
+}
+
+void roomManager::update()
+{
+	for (int i = 0;i < getNumRow();i++)
+	{
+		unsigned char sig[getNumColumn()];
+		for (int o = 0;o < getNumColumn();o++) sig[o] = 0x01;
+		sendSpi_chain (i, sig, getNumColumn());
+		inputSpi_chain(i, sig, getNumColumn());
+
+		for (int j = 0;j < getNumColumn();j++)
+		{
+			unsigned char val = sig[getNumColumn() - (j + 1)];
+			if ((val != 128) && (val != 129))
+				units[i][j].curAnalog = val;
+			
+			if (units[i][j].curAnalog > 5)
+				sendSpi_single(i, 0x02, j);
+			else
+				sendSpi_single(i, 0x03, j);
+		}
+	}
 }
 
 void roomManager::draw()
@@ -97,8 +120,8 @@ void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
 	{
 		spiSender::transfer(&bytes[i]);
 	}
-	setSSPin(ss, false);
 	usleep(1000);
+	setSSPin(ss, false);
 }
 
 void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
@@ -112,7 +135,6 @@ void roomManager::inputSpi_chain(int ss, unsigned char *dst, int num)
 	}
 	usleep(1000);
 	setSSPin(ss, false);
-	usleep(1000);
 }
 
 void roomManager::setSSPin(int num, bool val)
