@@ -16,10 +16,20 @@ void ofApp::update()
 		for (int i = 0;i < 1;i++)
 		{
 			unsigned char sig[3] = {0x01, 0x01, 0x00};
-			room.sendSpi_chain(0, sig, 3);
-			room.inputSpi_chain(0, sig, 3);
+			room.sendSpi_chain(2, sig, 3);
+			room.inputSpi_chain(2, sig, 3);
 
 			cout << (int)(sig[0]) << "," << (int)(sig[1]) << "," << (int)(sig[2]) << endl;
+		}
+
+		for (int i = 0;i < 4;i++)
+		{
+			room.sendSpi_single(i, 0x04, 0);
+			room.sendSpi_single(i, 0xFF, 0);
+			room.sendSpi_single(i, 0x04, 1);
+			room.sendSpi_single(i, 0xFF, 1);
+			room.sendSpi_single(i, 0x04, 2);
+			room.sendSpi_single(i, 0xFF, 2);
 		}
 	}
 
