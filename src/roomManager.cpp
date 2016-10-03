@@ -50,7 +50,7 @@ void roomManager::update()
 		sendSpi_chain (i, sig, getNumColumn());
 		inputSpi_chain(i, sig, getNumColumn());
 
-		cout << sig[0] << "\t" << sig[1] << "\t" << sig[2] << endl;
+		cout << (int)(sig[0]) << "\t" << (int)(sig[1]) << "\t" << (int)(sig[2]) << endl;
 
 		for (int j = 0;j < getNumColumn();j++)
 		{
