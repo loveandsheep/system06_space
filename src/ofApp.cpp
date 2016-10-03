@@ -15,7 +15,7 @@ void ofApp::update()
 		cout << "===" << endl;
 		for (int i = 0;i < 3;i++)
 		{
-			unsigned char sig[3] = {0x01, 0x01, 0x01};
+			unsigned char sig[3] = {0x01, 0x00, 0x00};
 			room.sendSpi_chain(i, sig, 3);
 			room.inputSpi_chain(i, sig, 3);
 
