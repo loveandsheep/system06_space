@@ -16,7 +16,7 @@ void ofApp::update()
 		room.sendSpi_chain(0, sig, 3);
 		room.inputSpi_chain(0, sig, 3);
 
-		cout << sig[0] << "," << sig[1] << "," << sig[2] << endl;
+		cout << (int)(sig[0]) << "," << (int)(sig[1]) << "," << (int)(sig[2]) << endl;
 	}
 
 //	for (int i = 0;i < 4;i++)
