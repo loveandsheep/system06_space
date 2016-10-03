@@ -36,7 +36,22 @@ void roomManager::setup(int row, int column)
 	pinMode(SSPIN_D, OUTPUT);
 	pinMode(SSPIN_E, OUTPUT);
 #endif
-	
+
+	for (int i = 0;i < getNumRow();i++)
+	{
+		for (int j = 0;j < getNumColumn();j++)
+		{
+			unsigned char sig[getNumColumn()];
+
+			for (int o = 0;o < getNumColumn();o++) sig[o] = 0x04;
+			sendSpi_chain(i, sig, getNumColumn());
+
+			for (int o = 0;o < getNumColumn();o++) sig[o] = 0xFF;
+			sendSpi_chain(i, sig, getNumColumn());
+		}
+	}
+
+
 }
 
 void roomManager::update()
@@ -56,17 +71,18 @@ void roomManager::update()
 			unsigned char val = sig[j];
 			if ((val != 128) && (val != 129))
 				units[i][j].curAnalog = val;
-			
-			if (units[i][j].curAnalog > 3)
-			{
-				sendSpi_single(brokenCh[i], 0x04, j);
-				sendSpi_single(brokenCh[i], 0x00, j);
-			}
-			else
-			{
-				sendSpi_single(brokenCh[i], 0x04, j);
-				sendSpi_single(brokenCh[i], 0xFF, j);
-			}
+
+		}
+	}
+
+	if (ofGetFrameNum() % 120 == 0)
+	{
+		int r = ofRandom(getNumRow());
+		int c = ofRandom(getNumColumn());
+
+		if (units[r][c].curAnalog > 3)
+		{
+			bang(r, c);
 		}
 	}
 }
