@@ -10,59 +10,82 @@ void ofApp::setup()
 void ofApp::update()
 {
 
-	for (int i = 0;i < 4;i++)
+	if (ofGetFrameNum() % 1 == 0)
 	{
-		if (ofGetFrameNum() % 60 == 0)
+		cout << "===" << endl;
+		for (int i = 0;i < 4;i++)
 		{
+			unsigned char sig[3] = {0x01, 0x01, 0x01};
+			room.sendSpi_chain(i, sig, 3);
+			room.inputSpi_chain(i, sig, 3);
 
-			room.sendSpi_single(i, 0x04, 0);
-			room.sendSpi_single(i, 0x20, 0);
-
-			room.sendSpi_single(i, 0x04, 1);
-			room.sendSpi_single(i, 0xFF, 1);
-
-			room.sendSpi_single(i, 0x04, 2);
-			room.sendSpi_single(i, 0xFF, 2);
-
-			room.sendSpi_single(i, 0x02, 0);
-			usleep(5000);
-			room.sendSpi_single(i, 0x03, 0);
+			cout << (int)(sig[0]) << ",\t" << (int)(sig[1]) << ",\t" << (int)(sig[2]) << endl;
 		}
 
-		if (ofGetFrameNum() % 60 == 20)
-		{
-
-			room.sendSpi_single(i, 0x04, 0);
-			room.sendSpi_single(i, 0xFF, 0);
-
-			room.sendSpi_single(i, 0x04, 1);
-			room.sendSpi_single(i, 0x20, 1);
-
-			room.sendSpi_single(i, 0x04, 2);
-			room.sendSpi_single(i, 0xFF, 2);
-
-			room.sendSpi_single(i, 0x02, 1);
-			usleep(5000);
-			room.sendSpi_single(i, 0x03, 1);
-		}
-
-		if (ofGetFrameNum() % 60 == 40)
+		for (int i = 0;i < 4;i++)
 		{
 			room.sendSpi_single(i, 0x04, 0);
 			room.sendSpi_single(i, 0xFF, 0);
-
 			room.sendSpi_single(i, 0x04, 1);
 			room.sendSpi_single(i, 0xFF, 1);
-
 			room.sendSpi_single(i, 0x04, 2);
-			room.sendSpi_single(i, 0x20, 2);
-
-			room.sendSpi_single(i, 0x02, 2);
-			usleep(5000);
-			room.sendSpi_single(i, 0x03, 2);
+			room.sendSpi_single(i, 0xFF, 2);
 		}
-
 	}
+
+//	for (int i = 0;i < 4;i++)
+//	{
+//		if (ofGetFrameNum() % 60 == 0)
+//		{
+//
+//			room.sendSpi_single(i, 0x04, 0);
+//			room.sendSpi_single(i, 0x20, 0);
+//
+//			room.sendSpi_single(i, 0x04, 1);
+//			room.sendSpi_single(i, 0xFF, 1);
+//
+//			room.sendSpi_single(i, 0x04, 2);
+//			room.sendSpi_single(i, 0xFF, 2);
+//
+//			room.sendSpi_single(i, 0x02, 0);
+//			usleep(5000);
+//			room.sendSpi_single(i, 0x03, 0);
+//		}
+//
+//		if (ofGetFrameNum() % 60 == 20)
+//		{
+//
+//			room.sendSpi_single(i, 0x04, 0);
+//			room.sendSpi_single(i, 0xFF, 0);
+//
+//			room.sendSpi_single(i, 0x04, 1);
+//			room.sendSpi_single(i, 0x20, 1);
+//
+//			room.sendSpi_single(i, 0x04, 2);
+//			room.sendSpi_single(i, 0xFF, 2);
+//
+//			room.sendSpi_single(i, 0x02, 1);
+//			usleep(5000);
+//			room.sendSpi_single(i, 0x03, 1);
+//		}
+//
+//		if (ofGetFrameNum() % 60 == 40)
+//		{
+//			room.sendSpi_single(i, 0x04, 0);
+//			room.sendSpi_single(i, 0xFF, 0);
+//
+//			room.sendSpi_single(i, 0x04, 1);
+//			room.sendSpi_single(i, 0xFF, 1);
+//
+//			room.sendSpi_single(i, 0x04, 2);
+//			room.sendSpi_single(i, 0x20, 2);
+//
+//			room.sendSpi_single(i, 0x02, 2);
+//			usleep(5000);
+//			room.sendSpi_single(i, 0x03, 2);
+//		}
+//
+//	}
 }
 
 //--------------------------------------------------------------
