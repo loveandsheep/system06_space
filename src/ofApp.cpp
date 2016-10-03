@@ -10,7 +10,7 @@ void ofApp::setup()
 void ofApp::update()
 {
 
-	if (ofGetFrameNum() % 5 == 0)
+	if (ofGetFrameNum() % 1 == 0)
 	{
 		cout << "===" << endl;
 		for (int i = 0;i < 1;i++)
@@ -19,7 +19,7 @@ void ofApp::update()
 			room.sendSpi_chain(2, sig, 3);
 			room.inputSpi_chain(2, sig, 3);
 
-			cout << (int)(sig[0]) << "," << (int)(sig[1]) << "," << (int)(sig[2]) << endl;
+			cout << (int)(sig[0]) << ",\t" << (int)(sig[1]) << ",\t" << (int)(sig[2]) << endl;
 		}
 
 		for (int i = 0;i < 4;i++)
