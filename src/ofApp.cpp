@@ -10,14 +10,14 @@ void ofApp::setup()
 void ofApp::update()
 {
 
-	if (ofGetFrameNum() % 30 == 0)
+	if (ofGetFrameNum() % 5 == 0)
 	{
 		cout << "===" << endl;
-		for (int i = 0;i < 4;i++)
+		for (int i = 0;i < 1;i++)
 		{
 			unsigned char sig[3] = {0x01, 0x01, 0x00};
-			room.sendSpi_chain(i, sig, 3);
-			room.inputSpi_chain(i, sig, 3);
+			room.sendSpi_chain(0, sig, 3);
+			room.inputSpi_chain(0, sig, 3);
 
 			cout << (int)(sig[0]) << "," << (int)(sig[1]) << "," << (int)(sig[2]) << endl;
 		}
