@@ -39,14 +39,16 @@ public:
 	void update();
 	void draw();
 	
+	void bang(int row, int column);
+
 	int getNumRow();
 	int getNumColumn();
 	rmUnit const & getUnit(int row, int column);
 	
+	
 	vector <vector<rmUnit> > units;
 	
 	void sendSpi_single(int ss, unsigned char dat, int num);
-	
 	void sendSpi_chain(int ss, unsigned char* bytes, int num);
 	void inputSpi_chain(int ss, unsigned char* dst, int num);
 	

@@ -50,6 +50,19 @@ void roomManager::draw()
 	}
 }
 
+void roomManager::bang(int row, int column)
+{
+	sendSpi_single(row, 0x04, column);
+	sendSpi_single(row, 0x20, column);
+	
+	sendSpi_single(row, 0x02, column);
+	usleep(3000);
+	sendSpi_single(row, 0x03, column);
+
+	sendSpi_single(row, 0x04, column);
+	sendSpi_single(row, 0xFF, column);
+}
+
 int roomManager::getNumRow()
 {
 	return units.size();

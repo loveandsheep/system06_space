@@ -68,6 +68,7 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+	ofBackground(30);
 	ofPushMatrix();
 	ofTranslate(50, 50);
 	room.draw();
