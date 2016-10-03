@@ -55,9 +55,15 @@ void roomManager::update()
 				units[i][j].curAnalog = val;
 			
 			if (units[i][j].curAnalog > 5)
-				sendSpi_single(i, 0x02, j);
+			{
+				sendSpi_single(i, 0x04, j);
+				sendSpi_single(i, 0x00, j);
+			}
 			else
-				sendSpi_single(i, 0x03, j);
+			{
+				sendSpi_single(i, 0x04, j);
+				sendSpi_single(i, 0xFF, j);
+			}
 		}
 	}
 }
