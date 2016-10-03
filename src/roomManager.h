@@ -16,10 +16,11 @@
 #include <wiringPi.h>
 #endif
 
+//IO６が壊れたので一時スワップ
 #define SSPIN_A 5
-#define SSPIN_B 6
-#define SSPIN_C 13
-#define SSPIN_D 19
+#define SSPIN_B 13
+#define SSPIN_C 19
+#define SSPIN_D 6
 #define SSPIN_E 26
 
 class rmUnit{
@@ -36,7 +37,6 @@ public:
 	
 	//ROW...SPIで接続されたユニット(短辺)
 	//column...デイジーチェーンのユニット
-	constexpr static const int brokenCh[] = {0, 2, 3};
 
 	void setup(int row, int column);
 	

@@ -44,13 +44,13 @@ void roomManager::setup(int row, int column)
 			unsigned char sig[getNumColumn()];
 
 			for (int o = 0;o < getNumColumn();o++) sig[o] = 0x04;
-			sendSpi_chain(brokenCh[i], sig, getNumColumn());
+			sendSpi_chain(i, sig, getNumColumn());
 
 			for (int o = 0;o < getNumColumn();o++) sig[o] = 0xFF;
-			sendSpi_chain(brokenCh[i], sig, getNumColumn());
+			sendSpi_chain(i, sig, getNumColumn());
 
 			for (int o = 0;o < getNumColumn();o++) sig[o] = 0x03;
-			sendSpi_chain(brokenCh[i], sig, getNumColumn());
+			sendSpi_chain(i, sig, getNumColumn());
 		}
 	}
 
@@ -65,8 +65,8 @@ void roomManager::update()
 
 		for (int o = 0;o < getNumColumn();o++) sig[o] = 0x01;
 
-		sendSpi_chain (brokenCh[i], sig, getNumColumn());
-		inputSpi_chain(brokenCh[i], sig, getNumColumn());
+		sendSpi_chain (i, sig, getNumColumn());
+		inputSpi_chain(i, sig, getNumColumn());
 
 		for (int j = 0;j < getNumColumn();j++)
 		{
