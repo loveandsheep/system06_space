@@ -82,7 +82,7 @@ void roomManager::update()
 		}
 	}
 
-	if (ofGetFrameNum() % 30 == 0)
+	if (ofGetFrameNum() % 10 == 0)
 	{
 		static int cnt = 0;
 		cnt++;
@@ -90,10 +90,10 @@ void roomManager::update()
 		int c = cnt / getNumRow() % getNumColumn();
 
 		cout << "bang " << r << "," << c << endl;
-		if (units[r][c].curAnalog > 3)
-		{
+//		if (units[r][c].curAnalog > 3)
+//		{
 			bang(r, c);
-		}
+//		}
 	}
 }
 
