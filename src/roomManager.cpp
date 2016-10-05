@@ -89,7 +89,8 @@ void roomManager::update()
 		int r = cnt % getNumRow();
 		int c = cnt / getNumRow() % getNumColumn();
 
-		cout << "bang " << r << "," << c << endl;
+//		cout << "bang " << r << "," << c << endl;
+		cout << units[r][c].curAnalog << endl;
 //		if (units[r][c].curAnalog > 3)
 //		{
 			bang(r, c);
