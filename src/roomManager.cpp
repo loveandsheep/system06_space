@@ -74,13 +74,20 @@ void roomManager::update()
 			if ((val != 128) && (val != 129))
 				units[i][j].curAnalog = val;
 
+			if (units[i][j].curAnalog > 3)
+			{
+				sendSpi_single(i, 0x04, j);
+				sendSpi_single(i, 0x00, j);
+			}
 		}
 	}
 
 	if (ofGetFrameNum() % 30 == 0)
 	{
-		int r = ofRandom(getNumRow());
-		int c = ofRandom(getNumColumn());
+		static int cnt = 0;
+		cnt++;
+		int r = cnt % getNumRow();
+		int c = cnt / getNumRow() % getNumColumn();
 
 		cout << "bang " << r << "," << c << endl;
 		if (units[r][c].curAnalog > 3)
