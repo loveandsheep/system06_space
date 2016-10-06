@@ -24,7 +24,7 @@ void roomManager::setup(int row, int column)
 	spiSender::init();
 
 #ifndef TARGET_OSX
-	int speed = 1000000;
+	int speed = 50000;
 	
 	if (wiringPiSetupGpio() == -1)
 	{
@@ -82,7 +82,7 @@ void roomManager::update()
 		}
 	}
 
-	if (ofGetFrameNum() % 10 == 0)
+	if (ofGetFrameNum() % 5 == 0)
 	{
 		static int cnt = 0;
 		cnt++;
