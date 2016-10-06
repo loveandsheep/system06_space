@@ -139,13 +139,13 @@ rmUnit const & roomManager::getUnit(int row, int column)
 
 void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 {
-	unsigned char bts[getNumRow()];
-	for (int i = 0;i < getNumRow();i++)
+	unsigned char bts[getNumColumn()];
+	for (int i = 0;i < getNumColumn();i++)
 	{
 		bts[i] = (i == num ? dat : 0x00);
 	}
 
-	sendSpi_chain(ss, bts, getNumRow());
+	sendSpi_chain(ss, bts, getNumColumn());
 }
 
 void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
