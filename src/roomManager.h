@@ -25,21 +25,21 @@
 
 class rmUnit{
 public:
-	
-	void pop();
-	
-	int curAnalog;
-	bool ballStat;
+	int		curAnalog;
+	bool	ballStat;
 };
 
 class roomManager{
 public:
+	
+	static const int analog_thr = 50;
 	
 	//ROW...SPIで接続されたユニット(短辺)
 	//column...デイジーチェーンのユニット
 
 	void setup(int row, int column);
 	
+	void popManage();
 	void update();
 	void draw();
 	

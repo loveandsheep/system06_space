@@ -57,8 +57,14 @@ void roomManager::setup(int row, int column)
 
 }
 
+void roomManager::popManage()
+{
+	
+}
+
 void roomManager::update()
 {
+	//analog status update
 	for (int i = 0;i < getNumRow();i++)
 	{
 		unsigned char sig[getNumColumn()];
@@ -73,17 +79,18 @@ void roomManager::update()
 			unsigned char val = sig[j];
 			if ((val != 128) && (val != 129))
 				units[i][j].curAnalog = val;
-
+			if (units[i][j].curAnalog > analog_thr) units[i][j].ballStat = true;
 		}
 	}
 
+	popManage();
+	
 	if (ofGetFrameNum() % 30 == 0)
 	{
 		int r = ofRandom(getNumRow());
 		int c = ofRandom(getNumColumn());
 
-		cout << "bang " << r << "," << c << endl;
-		if (units[r][c].curAnalog > 3)
+		if (units[r][c].curAnalog > analog_thr)
 		{
 			bang(r, c);
 		}
