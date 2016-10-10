@@ -81,7 +81,13 @@ void roomManager::update()
 				units[i][j].curAnalog = val;
 
 			if (units[i][j].curAnalog > analog_thr)
+			{
 				units[i][j].ballStat = true;
+				sendSpi_single(i, 0x04, j);
+				sendSpi_single(i, 0xA4, j);
+			}
+			
+			
 		}
 	}
 
