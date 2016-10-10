@@ -27,6 +27,8 @@ void ofApp::draw()
 void ofApp::exit()
 {
 	cout << "called exit. " << endl;
+	
+	room.close();
 	spiSender::exit();
 }
 

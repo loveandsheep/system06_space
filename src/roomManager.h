@@ -45,6 +45,7 @@ public:
 	
 	void bang(int row, int column);
 
+	void close();
 	int getNumRow();
 	int getNumColumn();
 	rmUnit const & getUnit(int row, int column);
