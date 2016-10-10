@@ -92,12 +92,9 @@ void roomManager::update()
 	int r = cnt % getNumRow();
 	int c = cnt / getNumRow() % getNumColumn();
 	
-	if (units[r][c].curAnalog > analog_thr)
-	{
-		cout << "bang " << r << "," << c << endl;
-		cout << units[r][c].curAnalog << endl;
-		bang(r, c);
-	}
+	cout << "bang " << r << "," << c << endl;
+	cout << units[r][c].curAnalog << endl;
+	bang(r, c);
 }
 
 void roomManager::draw()
