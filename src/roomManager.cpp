@@ -84,7 +84,7 @@ void roomManager::update()
 			{
 				units[i][j].ballStat = true;
 				sendSpi_single(i, 0x04, j);
-				sendSpi_single(i, 0xA4, j);
+				sendSpi_single(i, 0x34, j);
 			}
 			
 			
