@@ -126,7 +126,7 @@ void roomManager::update()
 			
 			cout << "bang " << r << "," << c << endl;
 			cout << units[r][c].curAnalog << endl;
-			if (units[r][c].ballStat)
+			if (units[r][c].curAnalog > analog_thr)
 			{
 				bang(r, c);
 				break;
