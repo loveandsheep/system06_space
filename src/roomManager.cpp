@@ -24,7 +24,7 @@ void roomManager::setup(int row, int column)
 	spiSender::init();
 
 #ifndef TARGET_OSX
-	int speed = 1000000;
+	int speed = 50000;
 	
 	if (wiringPiSetupGpio() == -1)
 	{
@@ -79,19 +79,25 @@ void roomManager::update()
 			unsigned char val = sig[j];
 			if ((val != 128) && (val != 129))
 				units[i][j].curAnalog = val;
-			if (units[i][j].curAnalog > analog_thr) units[i][j].ballStat = true;
+
+			if (units[i][j].curAnalog > analog_thr)
+				units[i][j].ballStat = true;
 		}
 	}
 
 	popManage();
 	
-	if (ofGetFrameNum() % 30 == 0)
+	if (ofGetFrameNum() % 5 == 0)
 	{
-		int r = ofRandom(getNumRow());
-		int c = ofRandom(getNumColumn());
+		static int cnt = 0;
+		cnt++;
+		int r = cnt % getNumRow();
+		int c = cnt / getNumRow() % getNumColumn();
 
 		if (units[r][c].curAnalog > analog_thr)
 		{
+			cout << "bang " << r << "," << c << endl;
+			cout << units[r][c].curAnalog << endl;
 			bang(r, c);
 		}
 	}
@@ -138,13 +144,13 @@ rmUnit const & roomManager::getUnit(int row, int column)
 
 void roomManager::sendSpi_single(int ss, unsigned char dat, int num)
 {
-	unsigned char bts[getNumRow()];
-	for (int i = 0;i < getNumRow();i++)
+	unsigned char bts[getNumColumn()];
+	for (int i = 0;i < getNumColumn();i++)
 	{
 		bts[i] = (i == num ? dat : 0x00);
 	}
 
-	sendSpi_chain(ss, bts, getNumRow());
+	sendSpi_chain(ss, bts, getNumColumn());
 }
 
 void roomManager::sendSpi_chain(int ss, unsigned char* bytes, int num)
