@@ -113,7 +113,7 @@ void roomManager::update()
 
 	popManage();
 	
-	static int step = 0;
+	static int step = 3;
 	if (ofGetFrameNum() % step == 0)
 	{
 		step = ofRandom(1, 60);
