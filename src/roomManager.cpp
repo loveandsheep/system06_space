@@ -116,15 +116,23 @@ void roomManager::update()
 	static int step = 3;
 	if (ofGetFrameNum() % step == 0)
 	{
-		step = ofRandom(1, 60);
-		static int cnt = 0;
-		cnt++;
-		int r = cnt % getNumRow();
-		int c = cnt / getNumRow() % getNumColumn();
-		
-		cout << "bang " << r << "," << c << endl;
-		cout << units[r][c].curAnalog << endl;
-		bang(r, c);
+		for (int i = 0;i < 100;i++)
+		{
+			step = ofRandom(1, 60);
+			static int cnt = 0;
+			cnt++;
+			int r = cnt % getNumRow();
+			int c = cnt / getNumRow() % getNumColumn();
+			
+			cout << "bang " << r << "," << c << endl;
+			cout << units[r][c].curAnalog << endl;
+			if (units[r][c].ballStat)
+			{
+				bang(r, c);
+				break;
+			}
+			
+		}
 	}
 }
 
