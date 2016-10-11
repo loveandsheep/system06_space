@@ -102,6 +102,9 @@ void roomManager::update()
 		
 		if (m.getAddress() == "/mode")
 			currentMode = m.getArgAsInt(0);
+		
+		if (m.getAddress() == "/analog")
+			analog_thr = m.getArgAsInt(0);
 	}
 	
 	if (currentMode == MODE_STAY)

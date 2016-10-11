@@ -26,7 +26,7 @@ public:
 class roomManager{
 public:
 	
-	static const int analog_thr = 10;
+	int analog_thr = 10;
 	
 	//ROW...SPIで接続されたユニット(短辺)
 	//column...デイジーチェーンのユニット
