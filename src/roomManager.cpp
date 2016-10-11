@@ -105,6 +105,25 @@ void roomManager::update()
 		
 		if (m.getAddress() == "/analog")
 			analog_thr = m.getArgAsInt(0);
+		
+		if (m.getAddress() == "/anaDump")
+		{
+			ofxOscSender sender;
+			sender.setup(m.getRemoteIp(), 12400);
+			
+			string mes = "";
+			for (int i = 0;i < getNumRow();i++)
+			{
+				for (int j = 0;j < getNumColumn();j++)
+				{
+					mes += ofToString(i) + "," + ofToString(j) + " : " + ofToString(units[i][j].curAnalog) + "\n";
+				}
+			}
+			ofxOscMessage m;
+			m.setAddress("/anaDump");
+			m.addStringArg(mes);
+			sender.sendMessage(m);
+		}
 	}
 	
 	if (currentMode == MODE_STAY)
