@@ -22,6 +22,11 @@ void roomManager::setup(int row, int column)
 	}
 
 	spiSender::init();
+	
+	if (row == 3 && column == 3)
+	{
+		swap(SSPIN_B, SSPIN_D);
+	}
 
 #ifndef TARGET_OSX
 	int speed = 50000;
@@ -54,7 +59,9 @@ void roomManager::setup(int row, int column)
 		}
 	}
 
-
+	receiver.setup(12400);
+	
+	currentMode = MODE_TEST;
 }
 
 void roomManager::close()
@@ -84,56 +91,91 @@ void roomManager::popManage()
 
 void roomManager::update()
 {
-	//analog status update
-	for (int i = 0;i < getNumRow();i++)
+	
+	while (receiver.hasWaitingMessages())
 	{
-		unsigned char sig[getNumColumn()];
-
-		for (int o = 0;o < getNumColumn();o++) sig[o] = 0x01;
-
-		sendSpi_chain (i, sig, getNumColumn());
-		inputSpi_chain(i, sig, getNumColumn());
-
-		for (int j = 0;j < getNumColumn();j++)
+		ofxOscMessage m;
+		receiver.getNextMessage(m);
+		
+		if (m.getAddress() == "/bang")
+			bang(m.getArgAsInt(0), m.getArgAsInt(1));
+		
+		if (m.getAddress() == "/mode")
+			currentMode = m.getArgAsInt(0);
+	}
+	
+	if (currentMode == MODE_STAY)
+	{
+		for (int i = 0;i < getNumRow();i++)
 		{
-			unsigned char val = sig[j];
-			if ((val != 128) && (val != 129))
-				units[i][j].curAnalog = val;
-
-			if (units[i][j].curAnalog > analog_thr)
+			for (int j = 0;j < getNumColumn();j++)
 			{
-				units[i][j].ballStat = true;
-				sendSpi_single(i, 0x04, j);
-				sendSpi_single(i, 0x34, j);
+				unsigned char sig[getNumColumn()];
+				
+				for (int o = 0;o < getNumColumn();o++) sig[o] = 0x04;
+				sendSpi_chain(i, sig, getNumColumn());
+				
+				for (int o = 0;o < getNumColumn();o++) sig[o] = 0xFF;
+				sendSpi_chain(i, sig, getNumColumn());
+				
+				for (int o = 0;o < getNumColumn();o++) sig[o] = 0x03;
+				sendSpi_chain(i, sig, getNumColumn());
 			}
-			
-			
 		}
 	}
-
-	popManage();
-	
-	static int step = 3;
-	if (ofGetFrameNum() % step == 0)
+	if (currentMode == MODE_REGULAR)
 	{
-		for (int i = 0;i < 100;i++)
+		popManage();
+	}
+	if (currentMode == MODE_MANUAL)
+	{
+		
+	}
+	if (currentMode == MODE_TEST)
+	{
+		//analog status update
+		for (int i = 0;i < getNumRow();i++)
 		{
-			step = ofRandom(1, 60);
+			unsigned char sig[getNumColumn()];
+			
+			for (int o = 0;o < getNumColumn();o++) sig[o] = 0x01;
+			
+			sendSpi_chain (i, sig, getNumColumn());
+			inputSpi_chain(i, sig, getNumColumn());
+			
+			for (int j = 0;j < getNumColumn();j++)
+			{
+				unsigned char val = sig[j];
+				if ((val != 128) && (val != 129))
+					units[i][j].curAnalog = val;
+				
+				if (units[i][j].curAnalog > analog_thr)
+				{
+					units[i][j].ballStat = true;
+					sendSpi_single(i, 0x04, j);
+					sendSpi_single(i, 0x34, j);
+				}
+				
+			}
+		}
+
+		static int step = 3;
+		if (ofGetFrameNum() % step == 0)
+		{
 			static int cnt = 0;
 			cnt++;
 			int r = cnt % getNumRow();
 			int c = cnt / getNumRow() % getNumColumn();
 			
-			cout << "bang " << r << "," << c << endl;
-			cout << units[r][c].curAnalog << endl;
 			if (units[r][c].curAnalog > analog_thr)
 			{
 				bang(r, c);
-				break;
 			}
-			
 		}
 	}
+	
+
+
 }
 
 void roomManager::draw()

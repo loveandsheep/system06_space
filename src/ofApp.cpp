@@ -3,7 +3,21 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	room.setup(3, 3);
+	int tgRow = 1, tgColumn = 1;
+	
+	FILE *fp;
+	char num[128];
+	
+	if ((fp = fopen(ofToDataPath("settings").c_str(), "r")) != NULL)
+	{
+		fgets(num, 128, fp);
+		tgRow = ofToInt(num);
+		fgets(num, 128, fp);
+		tgColumn = ofToInt(num);
+	}
+	
+	cout << "room initialize :" << tgRow << "x" << tgColumn << endl;
+	room.setup(tgRow, tgColumn);
 }
 
 //--------------------------------------------------------------
