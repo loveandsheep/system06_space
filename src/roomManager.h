@@ -20,6 +20,7 @@
 class rmUnit{
 public:
 	int		curAnalog;
+	int		onCount;
 	bool	ballStat;
 };
 

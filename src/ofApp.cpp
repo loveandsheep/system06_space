@@ -3,7 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	int tgRow = 1, tgColumn = 1;
+	int tgRow = 1;
+	int tgColumn = 1;
 	
 	FILE *fp;
 	char num[128];
@@ -16,7 +17,6 @@ void ofApp::setup()
 		tgColumn = ofToInt(num);
 	}
 	
-	cout << "room initialize :" << tgRow << "x" << tgColumn << endl;
 	room.setup(tgRow, tgColumn);
 }
 

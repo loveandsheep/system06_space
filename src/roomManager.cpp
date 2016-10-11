@@ -11,6 +11,8 @@
 
 void roomManager::setup(int row, int column)
 {
+	cout << "room initialize :" << row << "x" << column << endl;
+
 	for (int i = 0;i < row;i++)
 	{
 		vector<rmUnit> un;

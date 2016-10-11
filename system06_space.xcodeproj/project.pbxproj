@@ -26,6 +26,7 @@
 		B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */; };
 		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
 		C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC8881B3C8C0A1C45F042E7A /* OscPrintReceivedElements.cpp */; };
+		C681DC2C1DAD27DC00DAB41A /* roomDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C681DC2A1DAD27DC00DAB41A /* roomDrawer.cpp */; };
 		C69F0B021D9BBCFA00EB6636 /* spiSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C69F0B001D9BBCFA00EB6636 /* spiSender.cpp */; };
 		C6B301231D97D35D008B893F /* roomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6B301211D97D35D008B893F /* roomManager.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -103,6 +104,8 @@
 		BC8881B3C8C0A1C45F042E7A /* OscPrintReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscPrintReceivedElements.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
 		C2FAC65C491D4231379F3298 /* ofxOscReceiver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOscReceiver.cpp; path = ../../../addons/ofxOsc/src/ofxOscReceiver.cpp; sourceTree = SOURCE_ROOT; };
 		C58862C6D212C8E8A83810F4 /* ofxOscMessage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscMessage.h; path = ../../../addons/ofxOsc/src/ofxOscMessage.h; sourceTree = SOURCE_ROOT; };
+		C681DC2A1DAD27DC00DAB41A /* roomDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roomDrawer.cpp; sourceTree = "<group>"; };
+		C681DC2B1DAD27DC00DAB41A /* roomDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = roomDrawer.h; sourceTree = "<group>"; };
 		C6937888E126BADC8777423B /* OscTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscTypes.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h; sourceTree = SOURCE_ROOT; };
 		C69F0B001D9BBCFA00EB6636 /* spiSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spiSender.cpp; sourceTree = "<group>"; };
 		C69F0B011D9BBCFA00EB6636 /* spiSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spiSender.h; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				C6B301221D97D35D008B893F /* roomManager.h */,
 				C6B301211D97D35D008B893F /* roomManager.cpp */,
+				C681DC2B1DAD27DC00DAB41A /* roomDrawer.h */,
+				C681DC2A1DAD27DC00DAB41A /* roomDrawer.cpp */,
 				C69F0B011D9BBCFA00EB6636 /* spiSender.h */,
 				C69F0B001D9BBCFA00EB6636 /* spiSender.cpp */,
 			);
@@ -424,6 +429,7 @@
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
+				C681DC2C1DAD27DC00DAB41A /* roomDrawer.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */,
 				5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */,
