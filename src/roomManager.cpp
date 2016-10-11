@@ -167,10 +167,7 @@ void roomManager::update()
 			int r = cnt % getNumRow();
 			int c = cnt / getNumRow() % getNumColumn();
 			
-			if (units[r][c].curAnalog > analog_thr)
-			{
-				bang(r, c);
-			}
+			bang(r, c);
 		}
 	}
 	
