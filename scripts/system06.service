@@ -1,0 +1,11 @@
+[Unit]
+Description = sys06
+
+[Service]
+ExecStart=/home/pi/openFrameworks/apps/myApps/system06_space/scripts/runSys06.sh
+Restart=no
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+

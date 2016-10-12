@@ -19,6 +19,8 @@ void roomManager::setup(int row, int column)
 		for (int j = 0;j < column;j++)
 		{
 			un.push_back(rmUnit());
+			un.back().rId = i;
+			un.back().cId = j;
 		}
 		units.push_back(un);
 	}
@@ -88,7 +90,28 @@ void roomManager::close()
 
 void roomManager::popManage()
 {
-	
+	static int step = 3;
+	if (ofGetFrameNum() % step == 0)
+	{
+		step = ofRandom(3, 70);
+		rmUnit* targ = NULL;
+		for (int i = 0;i < getNumRow();i++)
+		{
+			for (int j = 0;j < getNumColumn();j++)
+			{
+				rmUnit* un = &units[i][j];
+				
+				if (un->ballStat)
+				{
+					if (targ == NULL) targ = un;
+					if (targ->onCount < un->onCount)
+						targ = un;
+				}
+			}
+		}
+		
+		if (targ) bang(targ->rId, targ->cId);
+	}
 }
 
 void roomManager::update()
@@ -104,7 +127,7 @@ void roomManager::update()
 		
 		if (m.getAddress() == "/mode")
 			currentMode = m.getArgAsInt(0);
-		
+
 		if (m.getAddress() == "/analog")
 			analog_thr = m.getArgAsInt(0);
 		
@@ -152,6 +175,26 @@ void roomManager::update()
 	if (currentMode == MODE_REGULAR)
 	{
 		popManage();
+		
+		unsigned char signals[getNumRow()][getNumColumn()];
+		unsigned char signa04[getNumRow()][getNumColumn()];
+		for (int i = 0;i < getNumRow();i++)
+		{
+			for (int j = 0;j < getNumColumn();j++)
+			{
+				if (units[i][j].curAnalog > analog_thr)
+				{
+					signa04[i][j] = 0x04;
+					signals[i][j] = 0x34;
+				}else{
+					signa04[i][j] = 0x04;
+					signals[i][j] = 0xFF;
+				}
+			}
+			
+			sendSpi_chain(i, signa04[i], getNumColumn());
+			sendSpi_chain(i, signals[i], getNumColumn());
+		}
 	}
 	if (currentMode == MODE_MANUAL)
 	{
@@ -160,18 +203,28 @@ void roomManager::update()
 	if (currentMode == MODE_TEST)
 	{
 		//analog status update
+		unsigned char signals[getNumRow()][getNumColumn()];
+		unsigned char signa04[getNumRow()][getNumColumn()];
+		
 		for (int i = 0;i < getNumRow();i++)
 		{
 			for (int j = 0;j < getNumColumn();j++)
 			{
 				if (units[i][j].curAnalog > analog_thr)
 				{
-					sendSpi_single(i, 0x04, j);
-					sendSpi_single(i, 0x34, j);
+					signa04[i][j] = 0x04;
+					signals[i][j] = 0x34;
+				}else{
+					signa04[i][j] = 0x00;
+					signals[i][j] = 0x00;
 				}
 			}
+
+			sendSpi_chain(i, signa04[i], getNumColumn());
+			sendSpi_chain(i, signals[i], getNumColumn());
 		}
 
+		
 		static int step = 3;
 		if (ofGetFrameNum() % step == 0)
 		{
@@ -239,6 +292,7 @@ void roomManager::bang(int row, int column)
 	sendSpi_single(row, 0xFF, column);
 	
 	units[row][column].bangCount = 0;
+	units[row][column].onCount = 0;
 }
 
 int roomManager::getNumRow()
