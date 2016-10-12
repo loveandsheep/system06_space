@@ -90,8 +90,10 @@ void roomManager::close()
 
 void roomManager::popManage()
 {
-	if (ofGetFrameNum() % 10 == 0)
+	static int step = 3;
+	if (ofGetFrameNum() % step == 0)
 	{
+		step = ofRandom(3, 70);
 		rmUnit* targ = NULL;
 		for (int i = 0;i < getNumRow();i++)
 		{
@@ -290,6 +292,7 @@ void roomManager::bang(int row, int column)
 	sendSpi_single(row, 0xFF, column);
 	
 	units[row][column].bangCount = 0;
+	units[row][column].onCount = 0;
 }
 
 int roomManager::getNumRow()
