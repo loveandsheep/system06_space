@@ -18,6 +18,8 @@ void ofApp::setup()
 	}
 	
 	room.setup(tgRow, tgColumn);
+	drawer.setup();
+	drawer.room = &room;
 }
 
 //--------------------------------------------------------------
@@ -25,6 +27,7 @@ void ofApp::update()
 {
 
 	room.update();
+	drawer.update();
 	
 }
 
@@ -33,8 +36,7 @@ void ofApp::draw()
 {
 	ofBackground(30);
 	ofPushMatrix();
-	ofTranslate(50, 50);
-	room.draw();
+	drawer.draw();
 	ofPopMatrix();
 }
 
