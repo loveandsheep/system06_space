@@ -19,6 +19,7 @@
 
 class rmUnit{
 public:
+	int		rId,cId;
 	int		curAnalog;
 	int		onCount;
 	int		bangCount;

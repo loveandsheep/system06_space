@@ -19,6 +19,8 @@ void roomManager::setup(int row, int column)
 		for (int j = 0;j < column;j++)
 		{
 			un.push_back(rmUnit());
+			un.back().rId = i;
+			un.back().cId = j;
 		}
 		units.push_back(un);
 	}
@@ -88,7 +90,26 @@ void roomManager::close()
 
 void roomManager::popManage()
 {
-	
+	if (ofGetFrameNum() % 10 == 0)
+	{
+		rmUnit* targ = NULL;
+		for (int i = 0;i < getNumRow();i++)
+		{
+			for (int j = 0;j < getNumColumn();j++)
+			{
+				rmUnit* un = &units[i][j];
+				
+				if (un->ballStat)
+				{
+					if (targ == NULL) targ = un;
+					if (targ->onCount < un->onCount)
+						targ = un;
+				}
+			}
+		}
+		
+		if (targ) bang(targ->rId, targ->cId);
+	}
 }
 
 void roomManager::update()
@@ -104,7 +125,7 @@ void roomManager::update()
 		
 		if (m.getAddress() == "/mode")
 			currentMode = m.getArgAsInt(0);
-		
+
 		if (m.getAddress() == "/analog")
 			analog_thr = m.getArgAsInt(0);
 		
