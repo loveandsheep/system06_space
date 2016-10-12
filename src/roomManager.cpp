@@ -173,6 +173,26 @@ void roomManager::update()
 	if (currentMode == MODE_REGULAR)
 	{
 		popManage();
+		
+		unsigned char signals[getNumRow()][getNumColumn()];
+		unsigned char signa04[getNumRow()][getNumColumn()];
+		for (int i = 0;i < getNumRow();i++)
+		{
+			for (int j = 0;j < getNumColumn();j++)
+			{
+				if (units[i][j].curAnalog > analog_thr)
+				{
+					signa04[i][j] = 0x04;
+					signals[i][j] = 0x34;
+				}else{
+					signa04[i][j] = 0x04;
+					signals[i][j] = 0xFF;
+				}
+			}
+			
+			sendSpi_chain(i, signa04[i], getNumColumn());
+			sendSpi_chain(i, signals[i], getNumColumn());
+		}
 	}
 	if (currentMode == MODE_MANUAL)
 	{
