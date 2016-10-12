@@ -160,18 +160,28 @@ void roomManager::update()
 	if (currentMode == MODE_TEST)
 	{
 		//analog status update
+		unsigned char signals[getNumRow()][getNumColumn()];
+		unsigned char signa04[getNumRow()][getNumColumn()];
+		
 		for (int i = 0;i < getNumRow();i++)
 		{
 			for (int j = 0;j < getNumColumn();j++)
 			{
 				if (units[i][j].curAnalog > analog_thr)
 				{
-					sendSpi_single(i, 0x04, j);
-					sendSpi_single(i, 0x34, j);
+					signa04[i][j] = 0x04;
+					signals[i][j] = 0x34;
+				}else{
+					signa04[i][j] = 0x00;
+					signals[i][j] = 0x00;
 				}
 			}
+
+			sendSpi_chain(i, signa04[i], getNumColumn());
+			sendSpi_chain(i, signals[i], getNumColumn());
 		}
 
+		
 		static int step = 3;
 		if (ofGetFrameNum() % step == 0)
 		{
