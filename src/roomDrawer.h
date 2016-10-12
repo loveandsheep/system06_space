@@ -18,6 +18,8 @@ public:
 	void setup();
 	void update();
 	void draw();
+	
+	roomManager *room;
 };
 
 #endif /* roomDrawer_hpp */

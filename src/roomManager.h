@@ -21,6 +21,7 @@ class rmUnit{
 public:
 	int		curAnalog;
 	int		onCount;
+	int		bangCount;
 	bool	ballStat;
 };
 
@@ -39,6 +40,7 @@ public:
 	void draw();
 	
 	void bang(int row, int column);
+	void refleshAnalog();
 
 	void close();
 	int getNumRow();

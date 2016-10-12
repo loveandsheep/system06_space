@@ -7,3 +7,18 @@
 //
 
 #include "roomDrawer.h"
+
+void roomDrawer::setup()
+{
+	
+}
+
+void roomDrawer::update()
+{
+	
+}
+
+void roomDrawer::draw()
+{
+	
+}

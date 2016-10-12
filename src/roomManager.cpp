@@ -128,6 +128,8 @@ void roomManager::update()
 		}
 	}
 	
+	refleshAnalog();
+	
 	if (currentMode == MODE_STAY)
 	{
 		for (int i = 0;i < getNumRow();i++)
@@ -160,26 +162,13 @@ void roomManager::update()
 		//analog status update
 		for (int i = 0;i < getNumRow();i++)
 		{
-			unsigned char sig[getNumColumn()];
-			
-			for (int o = 0;o < getNumColumn();o++) sig[o] = 0x01;
-			
-			sendSpi_chain (i, sig, getNumColumn());
-			inputSpi_chain(i, sig, getNumColumn());
-			
 			for (int j = 0;j < getNumColumn();j++)
 			{
-				unsigned char val = sig[j];
-				if ((val != 128) && (val != 129))
-					units[i][j].curAnalog = val;
-				
 				if (units[i][j].curAnalog > analog_thr)
 				{
-					units[i][j].ballStat = true;
 					sendSpi_single(i, 0x04, j);
 					sendSpi_single(i, 0x34, j);
 				}
-				
 			}
 		}
 
@@ -210,6 +199,33 @@ void roomManager::draw()
 	}
 }
 
+void roomManager::refleshAnalog()
+{
+	//analog status update
+	for (int i = 0;i < getNumRow();i++)
+	{
+		unsigned char sig[getNumColumn()];
+		for (int o = 0;o < getNumColumn();o++) sig[o] = 0x01;
+		
+		sendSpi_chain (i, sig, getNumColumn());
+		inputSpi_chain(i, sig, getNumColumn());
+		
+		for (int j = 0;j < getNumColumn();j++)
+		{
+			unsigned char val = sig[j];
+			if ((val != 128) && (val != 129))
+				units[i][j].curAnalog = val;
+			
+			units[i][j].ballStat = units[i][j].curAnalog > analog_thr;
+			if (units[i][j].ballStat)
+				units[i][j].onCount++;
+			else
+				units[i][j].onCount = 0;
+		}
+	}
+
+}
+
 void roomManager::bang(int row, int column)
 {
 	sendSpi_single(row, 0x04, column);
@@ -221,6 +237,8 @@ void roomManager::bang(int row, int column)
 
 	sendSpi_single(row, 0x04, column);
 	sendSpi_single(row, 0xFF, column);
+	
+	units[row][column].bangCount = 0;
 }
 
 int roomManager::getNumRow()
