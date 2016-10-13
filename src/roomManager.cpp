@@ -65,7 +65,7 @@ void roomManager::setup(int row, int column)
 
 	receiver.setup(12400);
 	
-	currentMode = MODE_TEST;
+	currentMode = MODE_STAY;
 }
 
 void roomManager::close()
