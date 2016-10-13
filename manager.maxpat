@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 318.0, 142.0, 957.0, 744.0 ],
+		"rect" : [ 710.0, 78.0, 957.0, 744.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -836,7 +836,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-44",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,
@@ -876,7 +875,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-41",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,
@@ -956,7 +954,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-35",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,
@@ -996,7 +993,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-31",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,

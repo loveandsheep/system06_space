@@ -182,16 +182,9 @@ void roomManager::update()
 		{
 			for (int j = 0;j < getNumColumn();j++)
 			{
-				if (units[i][j].curAnalog > analog_thr)
-				{
-					signa04[i][j] = 0x04;
-					signals[i][j] = 0x34;
-				}else{
-					signa04[i][j] = 0x04;
-					signals[i][j] = 0xFF;
-				}
+				signa04[i][j] = 0x04;
+				signals[i][j] = 0xFF;
 			}
-			
 			sendSpi_chain(i, signa04[i], getNumColumn());
 			sendSpi_chain(i, signals[i], getNumColumn());
 		}
