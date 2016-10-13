@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "roomManager.h"
+#include "roomDrawer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -23,5 +24,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 	void exit();
+	
 	roomManager room;
+	roomDrawer drawer;
 };
